@@ -10,14 +10,14 @@ Curso propuesto por el grupo de trabajo Semana de Ingenio y Diseño (**SID**) de
 
 ## Objetivos
 
-* Examinar las características principales del elemento gráfico JTable y como podemos manejarlo para nuestras interfaces gráficas.
-* Reconocer el propósito del uso de tablas dentro de nuestras interfaces y como gestionar la información dentro de estas.
+* Examinar las características principales del objeto gráfico JTable y como podemos crearla, y gestionarla para nuestras interfaces gráficas.
+* Reconocer el propósito del uso de tablas dentro de nuestras interfaces y como gestionar la información a través de estas.
 * Identificar las acciónes principales de gestión de información en una tabla tal como insertar información, modificarla, filtrarla y eliminarla.
 * Personalizar la tabla con estilos para que esta pueda tener un aspecto conforme con el resto de la interfaz gráfica.
 
 # Antes de Comenzar
 
-Dentro de nuestro paquete **archives** vamos a agregar otro archivo plano llamado **amigos.txt** que contendrá información general de los contactos que podríamos tener y gestionar. Este archivo planos lo puede encontrar en este mismo repositorio entrando a la carpeta **Clase11** seguido de la carpeta **src** y luego en la carpeta **archKvives**.
+Dentro de nuestro paquete **archives** vamos a agregar otro archivo plano llamado **amigos.txt** que contendrá información general de los contactos que vamos a gestionar. Este archivo planos lo puede encontrar en este mismo repositorio entrando a la carpeta **Clase11** seguido de la carpeta **src** y luego en la carpeta **archives**.
 
 <div align='center'>
     <img  src='https://i.imgur.com/qQxza9B.png'>
@@ -44,11 +44,11 @@ public Border getBorderAzul(){
 }
 ```
 
-Recordando un poco nuestro recorrido, hemos utilizado los servicios para gestionar varias cosas dentro de nuestro proyecto, una de estas fue la generación automática de la reutilización del componente **Accion** a traves de la obtención de la información externa. Por otra parte ahora gestionamos el ingreso de nuestra aplicación a traves de algunos usuarios que han sido registrados y están contenidos de forma persistente (archivo plano) y gracias a los servicios no solo podemos controlar el ingreso único de estos usuarios sino que ademas podemos gestionar la información de estos a traves de varias partes de nuestro proyecto de forma independiente.
+Recordando un poco nuestro recorrido, hemos utilizado los servicios para gestionar varias cosas dentro de nuestro proyecto, una de estas fue la generación automática de la reutilización del componente **Accion** a traves de la obtención de la información externa. Por otra parte ahora gestionamos **el ingreso de nuestra aplicación** a traves de algunos usuarios que han sido registrados y están contenidos de forma persistente (archivo plano) y gracias a los servicios no solo podemos controlar el ingreso único de estos usuarios sino que ademas podemos gestionar la información de estos a traves de varias partes de nuestro proyecto de forma independiente.
 
 # Creación y gestión de tablas
 
-En esta sesión vamos a ver la creación y gestión del objeto gráfico avanzado **JTable** el cual es muy util para gestionar información, para dar un recorrido completo al uso de estos objetos vamos a ver ciertos items como:
+En esta sesión vamos a ver la creación y gestión del objeto gráfico avanzado **JTable** el cual es muy util para gestionar información, para dar un recorrido completo al uso de este objeto vamos a ver ciertos items como:
 
 * Creación de Servicios y preparativos para el uso de JTable.
 * Creación de JTable y sus partes.
@@ -57,7 +57,7 @@ En esta sesión vamos a ver la creación y gestión del objeto gráfico avanzado
 
 # Creación de servicios y preparativos para el uso de JTable.
 
-En esta sesión vamos a construir el componente gráficos **Amigos** con el cual un usuario podrá gestionar información de sus contactos, para esto vamos a necesitar traer información externa la cual contiene los datos de cada uno de los contactos. Vamos a ver la estructura del archivo plano.
+En esta lección vamos a construir el componente gráficos **Amigos** con el cual un usuario podrá gestionar información de sus contactos, para esto vamos a necesitar traer información externa la cual contiene los datos de cada uno de los contactos. Vamos a ver la estructura del archivo plano.
 
 <div align='center'>
     <img  src='https://i.imgur.com/cyoj18I.png'>
@@ -72,14 +72,15 @@ Podemos ver que los datos de un contacto (Amigo) son:
 * **Numero Telefónico**.
 * **Email**.
 
-Igual que en la sesión anterior, vamos a crear una clase que representara en objeto la información de un amigo, esta clase la creamos dentro del paquete **models**.
+## Preparación de Servicio y clases para gestionar la información externa
+
+Igual que en la sesión anterior, vamos a crear una clase que representará en objetos la información de un amigo, esta clase la creamos dentro del paquete **models**.
 
 <div align='center'>
     <img  src='https://i.imgur.com/FEagzsq.png'>
     <p>Creación de la clase amigo.</p>
 </div>
 
-## Preparación de Servicio y clases para gestionar la información externa
 Vamos a crear los atributos necesarios para representar esta información y sus respectivos métodos **set y get**.
 ```javascript
 public class Amigo {
@@ -136,14 +137,14 @@ public class Amigo {
 }
 ```
 
-Como suponemos que esta información la vamos a recibir desde una fuente externa vamos a crear un controlador externo que se encarga de gestionar esta información y con la cual nuestra aplicación va a interactuar.
+Como suponemos que esta información la vamos a recibir desde una fuente foránea vamos a crear un controlador externo que se encarga de gestionar esta información y con la cual nuestra aplicación va a interactuar.
 
 <div align='center'>
     <img  src='https://i.imgur.com/tyMmpt6.png'>
     <p>Creación de clase ControlAmigos en el paquete logic</p>
 </div>
 
-Igual que en la clase anterior como esta clase sera la que gestiona la información va a contener un atributo en forma de arreglo que contenga los objetos de los amigos:
+Igual que en la sesión anterior como esta clase sera la que gestiona la información, va a contener un atributo en forma de arreglo que contenga los objetos de los amigos:
 
 * **Declaración:**
 ```javascript
@@ -193,7 +194,7 @@ public void cargarDatos(){
 cargarDatos();
 ```
 
-Finalmente vamos a crear un método con el cual se devolverá todo el arreglo, en este caso a diferencia del ejemplo de la clase pasada el controlador solo devolverá la información que obtuvo en forma del arreglo y en el servicio vamos a manipular esa información:
+Finalmente vamos a crear un método con el cual se devolverá todo el arreglo, en este caso a diferencia del ejemplo de la lección pasada el controlador solo devolverá la información que obtuvo en forma del arreglo y en el servicio vamos a manipular este arreglo:
 
 ```javascript
 public ArrayList<Amigo> getAmigos(){
@@ -313,7 +314,7 @@ public void mouseEntered(MouseEvent e) {}
 public void mouseExited(MouseEvent e) {}
 ```
 
-Vamos a realizar el llamado al servicio **AmigoService** para poder traer la información externa:
+Vamos a realizar el llamado al servicio **AmigoService** para poder traer la información externa más adelante:
 
 * **Declaración**:
 ```javascript
@@ -401,7 +402,7 @@ Nuestra aplicación se vera algo asi:
     <p>Maquetación de los paneles dentro del componente Amigos</p>
 </div>
 
-Vamos a crear el contenido del panel **pOpciones**, este va a estar conformado por una serie de botones y un JTextField, los botones serán el medio para que el usuario interactué con la tabla mientras que el JTextField sera un espacio para que el usuario pueda filtrar y buscar información dentro de una tabla.
+Vamos a crear el contenido del panel **pOpciones**, este va a estar conformado por una serie de botones y un JTextField, los botones serán el medio para que el usuario interactué con la tabla mientras que el JTextField sera un espacio para que el usuario pueda filtrar y buscar información dentro de la tabla.
 
 * **Declaración Objetos Gráficos:**
 ```javascript
@@ -474,7 +475,7 @@ public void crearContenidoPOpciones(){
 }
 ```
 
-Se puede observar que dentro de la construcción de cada botón estamos añadiendo de una vez la propiedad de escucha a los eventos de acción **ActionListener** y los eventos del mouse **MouseListener**. La primera interfaz se usara para ejecutar las acciónes mientras que la segunda sera para roles mas estéticos. Por otro lado el JTextField adiciona la escucha a los eventos **FocusListener**.
+Se puede observar que dentro de la construcción de cada botón estamos añadiendo de una vez la propiedad de escucha a los eventos de acción **ActionListener** y los eventos del mouse **MouseListener**. La primera interfaz se usara para ejecutar las acciónes de manipulación de la información mientras que la segunda sera para roles mas estéticos. Por otro lado el JTextField adiciona la escucha a los eventos **FocusListener**.
 
 * **Llamada del método en el constructor:**
 ```javascript
@@ -670,7 +671,7 @@ public JTextField getTConsulta(){
 }
 ```
 
-Ya esta casi todo listo, falta configurar los eventos, los eventos de **acción** los revisaremos en la siguiente sección, vamos a utilizar nuestros eventos del **Mouse** y de tipo **Enfoque** para darle algo de interactividad a nuestro componente, nos ubicamos en nuestra clase **AmigosComponent**:
+Ya esta casi todo listo, falta configurar los eventos, los eventos de **acción** los revisaremos en la siguiente sección, vamos a utilizar nuestros eventos del **Mouse** y de tipo **Enfoque**(Focus) para darle algo de interactividad a nuestro componente, nos ubicamos en nuestra clase **AmigosComponent**.
 
 ### **Eventos MouseListener**
 
@@ -692,7 +693,7 @@ public void mouseExited(MouseEvent e) {
     }
 }
 ```
-En el anterior código realizamos una **Ejemplificación única de objetos de una misma clase** y ademas una **Discriminación por clases**. Esta ultima parece no ser necesaría ya que solo estamos configurando a un tipo de clase, sin embargo lo realizamos por un motivo que explicaremos una vez tengamos la tabla.
+En el anterior código realizamos una **Ejemplificación única de objetos de una misma clase** y ademas una **Discriminación por clases**. Esta ultima parece no ser necesaría ya que solo estamos configurando a un tipo de clase (botones), sin embargo lo realizamos por un motivo que explicaremos una vez tengamos la tabla.
 
 
 ### **Eventos FocusListener**
@@ -722,15 +723,15 @@ public void focusLost(FocusEvent e) {
     textField.setBorder(null);
 }
 ```
-Este enfoque es mucho mas acorde al enfoque que utilizamos por ejemplo en el login ya que ahora cada JTextfield se ocupa unicamente de su contenido y solo se activa cuando se selecciona sin necesidad de crear una gran cantidad de código ni varias condicionales.
+Este enfoque es mucho mas acorde al que utilizamos por ejemplo en el login ya que ahora cada JTextfield se ocupa unicamente de su contenido y solo se activa cuando se selecciona sin necesidad de crear una gran cantidad de código ni varias condicionales.
 
 # Creación de JTable y sus partes
 
-Ya tenemos listo todo para poder crear un objeto **JTable** y obtener información a traves de ella. Un objeto **JTable** es un objeto avanzado ya que generalmente no se crea unicamente el objeto y se adiciona como cualquier otro objeto sino que depende de algunas partes para su creación completa, a continuación mencionamos los objetos necesarios y su función:
-* **JScrollPane**: Este es un tipo de panel especial que se caracteriza por contener Scrolls (Barras laterales) con las que el usuario puede navegar de forma vertical u horizontal, en nuestro caso una tabla puede contener una cantidad considerable de filas o columnas y ademas no tiene un tamaño fijo ya que en tiempo de ejecución se pueden agregar mas filas o columnas, por lo que no se puede agregar simplemente a un panel y especificarle un tamaño fijo, de ser asi mucha información no sera visible para el usuario, es por eso que este tipo de panel cobra importancia y gracias a este podremos navegar dentro de la tabla y ver información que esta mas allá de los limites de nuestra interfaz.
-* **JTable**: Este es el objeto principal y esta es la representación de la información en forma de tabla que el usuario podrá revisar, ademas es el medio por el cual se tendrá una interacción entre el usuario y la información.
+Ya tenemos listo todo para poder crear un objeto **JTable** y obtener información a traves de ella. Un objeto **JTable** es un objeto avanzado ya que generalmente no se crea unicamente el objeto y se adiciona como cualquier otro, ya que este depende de algunas partes para su creación completa, a continuación mencionamos los objetos necesarios y su función:
+* **JScrollPane**: Este es un tipo de panel especial que se caracteriza por contener Scrolls (Barras laterales) con las que el usuario puede navegar de forma vertical u horizontal, en nuestro caso una tabla puede contener una cantidad considerable de filas o columnas y ademas no tiene un tamaño fijo ya que en tiempo de ejecución se pueden agregar mas filas o columnas, por lo que no se puede agregar simplemente a un panel y especificarle un tamaño fijo, de ser asi mucha información no será visible para el usuario, es por eso que este tipo de panel cobra importancia y gracias a este podremos navegar dentro de la tabla y ver información que esta mas allá de los limites de nuestra interfaz.
+* **JTable**: Este es el objeto principal y esta es la representación de la información en forma de tabla que el usuario podrá revisar, ademas es el medio por el cual se tendrá una interacción directa entre el usuario y la información.
 * **JTableHeader**: Este objeto se utiliza para dar una personalización gráfica al encabezado de la tabla.
-* **DefaultTableModel**: Este tipo de objeto es quizás el mas importante ya que es el que realmente contiene la información y puede ser mostrada en la tabla, es decir que mientras la **JTable** muestra la información de forma organizada al usuario, es el **DefaultTableModel** el que se encarga de gestionar que información es la que contiene dicha tabla.
+* **DefaultTableModel**: Este objeto es quizás el mas importante, ya que es el que realmente contiene la información y puede ser mostrada en la tabla, es decir que mientras la **JTable** muestra la información de forma organizada al usuario, es el **DefaultTableModel** el que se encarga de gestionar que información es la que contiene dicha tabla.
 * **Arreglo tipo Strings** este arreglo es opcional pero muchas veces se utiliza, representa la información que estará en encabezado de la tabla, es decir que son los títulos de cada columna en la tabla.
 
 Vamos a realizar la declaración de cada uno de estos objetos:
@@ -754,13 +755,13 @@ public void crearJTable(){
 * Lo primero que haremos dentro de este método sera ejemplificar al objeto **DefaultTableModel** que en nuestro caso llamamos **modelo**:
 ```javascript
 public void crearJTable(){
-    modelo= new DefaultTableModel();
+    modelo = new DefaultTableModel();
 }
 ```
-* Ahora vamos a agregar la información de los títulos de las columnas (la cabecera), para eso debemos decirle al modelo que e agregara con el método **setColumnIdentifiers** y le pasamos por parámetro al arreglo que contiene los títulos de las columnas en nuestro caso **cabecera**:
+* Ahora vamos a agregar la información de los títulos de las columnas (la cabecera), para eso debemos decirle al modelo que se agregará con el método **setColumnIdentifiers** y le pasamos por parámetro al arreglo que contiene los títulos de las columnas en nuestro caso **cabecera**:
 ```javascript
 public void crearJTable(){
-    modelo= new DefaultTableModel();
+    modelo = new DefaultTableModel();
     modelo.setColumnIdentifiers(cabecera);
 }
 ```
@@ -768,10 +769,10 @@ public void crearJTable(){
 * Ahora vamos a ejemplificar a nuestra tabla y ademas vamos a agregarle el modelo que previamente configuramos esto con el método **setModel**:
 ```javascript
 public void crearJTable(){
-    modelo= new DefaultTableModel();
+    modelo = new DefaultTableModel();
     modelo.setColumnIdentifiers(cabecera);
 
-    tabla= new JTable();
+    tabla = new JTable();
     tabla.setModel(modelo);
 }
 ```
@@ -780,10 +781,10 @@ Teniendo nuestra tabla ejemplificada vamos a obtener el **JTableHeader** de la t
 
 ```javascript
 public void crearJTable(){
-    modelo= new DefaultTableModel();
+    modelo = new DefaultTableModel();
     modelo.setColumnIdentifiers(cabecera);
 
-    tabla= new JTable();
+    tabla = new JTable();
     tabla.setModel(modelo);
     
     header = tabla.getTableHeader();
@@ -794,15 +795,15 @@ Finalmente vamos a crear a nuestro **JScrollPane** que va a contener a nuestra t
 
 ```javascript
 public void crearJTable(){
-    modelo= new DefaultTableModel();
+    modelo = new DefaultTableModel();
     modelo.setColumnIdentifiers(cabecera);
 
-    tabla= new JTable();
+    tabla = new JTable();
     tabla.setModel(modelo);
     
     header = tabla.getTableHeader();
 
-    pTabla= sObjGraficos.construirPanelBarra(tabla, 10, 220, 580, 370, Color.WHITE, null);
+    pTabla = sObjGraficos.construirPanelBarra(tabla, 10, 220, 580, 370, Color.WHITE, null);
     this.add(pTabla);
 }
 ```
@@ -835,7 +836,7 @@ public DefaultTableModel getModelo(){
 
 # Gestión de información dentro de un JTable
 
-Ya hemos incorporado la tabla a nuestra interfaz gráfica, es tiempo de empezar a gestionar la información de los contactos para que puedan ser vistos desde la tabla. Para esto vamos a utilizar nuestros botónes del panel **pOpcion**, como recordaremos estos escuchan a los eventos de acción asi que vamos a usarlo para gestionar la información en nuestra tabla. Nos ubicamos en la clase **AmigosComponent** y lo primero que vamos a hacer es la declaración de los métodos que vamos a utilizar:
+Ya hemos incorporado la tabla a nuestra interfaz gráfica, es tiempo de empezar a gestionar la información de los contactos para que puedan ser vistos desde esta. Para lograr aquello vamos a utilizar nuestros botónes del panel **pOpcion**, como recordaremos estos escuchan a los eventos de acción asi que vamos a usarlos para gestionar la información en nuestra tabla. Nos ubicamos en la clase **AmigosComponent** y lo primero que vamos a hacer es la declaración de los métodos que vamos a utilizar:
 
 ```javascript
 public void restaurarValores(){
@@ -883,7 +884,7 @@ public void actionPerformed(ActionEvent e) {
 }
 ```
 
-A continuación vamos a configurar todos los métodos paso a paso y explicando ciertas particularidades.
+A continuación vamos a configurar todos los métodos paso a paso y explicaremos ciertas particularidades.
 
 ## Mostrar registros en la tabla
 
@@ -917,7 +918,7 @@ public void mostrarRegistrosTabla(){
 }
 ```
 
-Sin embargo este método aun no ha sido configurado, vamos a realizar su codificación, como vamos a añadir una nueva fila a la tabla necesitamos llamar al modelo de la tabla ya que es este quien contiene la información que se mostrara en la tabla, para esto llamamos al método get correspondiente de la clase compañera **AmigosTemplate**:
+Sin embargo este método aun no ha sido configurado, vamos a realizar su codificación, como vamos a añadir una nueva fila a la tabla necesitamos llamar al **modelo** de la tabla ya que es este quien contiene la información que se mostrara en la tabla, para esto llamamos al método get correspondiente de la clase compañera **AmigosTemplate**:
 
 ```javascript
 public void agregarRegistro(Amigo amigo){
@@ -953,7 +954,7 @@ public void agregarRegistro(Amigo amigo){
 }
 ```
 
-El método **agregarRegistro** ya esta listo, vamos a continuar con nuestro método **mostrarRegistrosTabla**, en teoría ya debe mostrar todos los registros de la tabla, sin embargo hacen falta algunas configuraciones adicionales, por ejemplo debemos cambiar el label que muestra el valor del Id de un contacto por el siguiente numero al ultimo registro en la tabla, ya que si el usuario desea ingresar un nuevo contacto, el ID de este nuevo amigo debe ser siguiente al ultimo registro que esta en la tabla. Para esto vamos a obtener el tamaño del arreglo de amigos ya que su tamaño siempre sera igual al ultimo Id mas uno.
+El método **agregarRegistro** ya esta listo, vamos a continuar con nuestro método **mostrarRegistrosTabla**, en teoría ya debe mostrar todos los registros de la tabla, sin embargo hacen falta algunas configuraciones adicionales, por ejemplo debemos cambiar el label que muestra el valor del Id de un contacto por el siguiente numero al ultimo registro en la tabla, ya que si el usuario desea ingresar un nuevo contacto, el ID de este nuevo amigo debe ser siguiente al ultimo registro que esta en la tabla. Para esto vamos a obtener el tamaño del arreglo de amigos ya que su tamaño siempre será la cantidad de contactos mas uno.
 
 ```javascript
 public void mostrarRegistrosTabla(){
@@ -965,7 +966,7 @@ public void mostrarRegistrosTabla(){
 }
 ```
 
-Ahora debemos deshabilitar el botón mostrar registros ya que estos ya se están mostrando y quedemos evitar que se duplique la información en caso de que el usuario lo vuelva a oprimir, esto lo realizamos con el método **setEnable**:
+Ahora debemos deshabilitar el botón mostrar registros ya que estos ya se están mostrando en la tabla y quedemos evitar que se duplique la información en caso de que el usuario lo vuelva a oprimir, esto lo realizamos con el método **setEnable**:
 
 ```javascript
 public void mostrarRegistrosTabla(){
@@ -999,7 +1000,7 @@ public void insertarRegistroTabla(){
 }
 ```
 
-* Ahora vamos a configurar sus atributos, como el Id, el nombre, con ayuda de los métodos **set**, y le vamos a pasar la información que recibe desde los JTextField.
+* Ahora vamos a configurar sus atributos, como el Id, el nombre, edad, etc. Con ayuda de los métodos **set**, y le vamos a pasar la información que recibe desde los JTextField.
 
 ```javascript
 public void insertarRegistroTabla(){
@@ -1027,7 +1028,7 @@ public void insertarRegistroTabla(){
 }
 ```
 
-En teoría nuestro registro ya se muestra en la tabla una vez oprimamos el botón de insertar registro, sin embargo vamos a realizar unas cosas adicionales, por ejemplo vamos a agregar el objeto dentro del arreglo de amigos del servicio para que el numero de contactos total este actualizado para esto llamaremos al método **agregarAmigo** del servicio. Ademas vamos a dejar todos los JTextfield como estaban por defecto con sus respectivos placeholders y ademas vamos a actualizar el Id para el proximo registro, para esto nos vamos a ayudar del método **restaurarValores**.
+En teoría nuestro registro ya se muestra en la tabla una vez oprimamos el botón de insertar registro, sin embargo vamos a realizar unas cosas adicionales, por ejemplo vamos a agregar el objeto dentro del arreglo de amigos del servicio para que el numero de contactos total este actualizado, para esto llamaremos al método **agregarAmigo** del servicio. Ademas vamos a dejar todos los JTextfield como estaban por defecto con sus respectivos placeholders y ademas vamos a actualizar el Id para el proximo registro, para esto nos vamos a ayudar del método **restaurarValores**.
 
 ```javascript
 public void insertarRegistroTabla(){
@@ -1070,7 +1071,7 @@ Lo primero que debemos hacer es identificar la fila que el usuario ha selecciona
 
 ```javascript
 public void modificarRegistroTabla(){
-        int fSeleccionada = amigosTemplate.getTabla().getSelectedRow();
+    int fSeleccionada = amigosTemplate.getTabla().getSelectedRow();
 }
 ```
 
@@ -1089,8 +1090,8 @@ public void modificarRegistroTabla(){
 
 En el anterior if estamos preguntando si el valor devuelto es diferente a -1, de ser asi vamos a realizar la modificación de los datos, en caso contrario mostraremos un mensaje que indique que debe seleccionar una fila.
 
-Como vamos a modificar información de la tabla necesitamos manipularla a traves del modelo de la tabla asi que debemos obtenerlo, una vez lo obtenemos vamos a llamar a su método **setValueAt** Que recibe por parámetro 3 cosas:
-* La información que queremos poner ahora.
+Como vamos a modificar información de la tabla necesitamos manipularla a traves del **modelo** de la tabla asi que debemos obtenerlo, una vez lo obtenemos vamos a llamar a su método **setValueAt** Que recibe por parámetro 3 cosas:
+* La nueva información que queremos poner ahora.
 * El numero de la fila seleccionada.
 * El numero de la columna.
 
@@ -1127,9 +1128,9 @@ public void modificarRegistroTabla(){
         JOptionPane.showMessageDialog(null,"seleccione una fila", "Error" , JOptionPane.ERROR_MESSAGE);
 }
 ```
-Como se puede ver en el caso del nombre, pasamos la información que obtenemos del JTextField tNombre, la fila sera la que selecciono el usuario y la columna de los nombres siempre sera la numero 1 (la 0 es la del id), lo mismo ocurre con el telefono y email donde obtenemos la información correspondiente del JTextField y cambiamos el valor de la columna que para el telefono siempre sera la numero 2 y para el email al 3.
+Como se puede ver en el caso del nombre, pasamos la información que obtenemos del JTextField **tNombre**, la fila sera la que selecciono el usuario y la columna de los nombres siempre sera la numero 1 (la 0 es la del id), lo mismo ocurre con el telefono y email donde obtenemos la información correspondiente del JTextField y cambiamos el valor de la columna que para el telefono siempre sera la numero 2 y para el email será el numero 3.
 
-Si ejecutamos nuestra aplicación podemos ver que si funciona la modificación en la tabla sin embargo un usuario puede modificar mas datos a parte del nombre, telefono o email, ademas el cambio solo se ve en la tabla pero el objeto que contiene la información de ese objeto sigue intacta asi que es necesario también realizar la modificación de esos datos en el objeto, vamos a obtener el objeto desde el servicio y la posición en el arreglo es justamente la misma que en la posición de la fila en la tabla asi que se la enviamos:
+Si ejecutamos nuestra aplicación podemos ver que si funciona la modificación en la tabla sin embargo un usuario puede modificar mas datos a parte del nombre, telefono o email, ademas el cambio solo se ve en la tabla pero el objeto que contiene la información de ese objeto sigue intacta, asi que es necesario también realizar la modificación de esos datos en el objeto, vamos a obtener el objeto desde el servicio y la posición en el arreglo es justamente la misma que en la posición de la fila en la tabla asi que se la enviamos como argumento:
 
 ```javascript
 public void modificarRegistroTabla(){
@@ -1269,7 +1270,7 @@ public void eliminarRegistroTabla(){
 }
 ```
 
-Ahora para poder eliminar un registro de la tabla vamos a llamar al modelo de esta y luego usar el método **removeRow** que va a pedir como parámetro el numero de la fila que se ha seleccionado.
+Ahora para poder eliminar un registro de la tabla vamos a llamar al **modelo** de esta y luego usar el método **removeRow** que va a pedir como parámetro el numero de la fila que se ha seleccionado.
 
 ```javascript
 public void eliminarRegistroTabla(){
@@ -1285,7 +1286,7 @@ En este caso solo eliminaremos el registro de la tabla y no del arreglo ya que n
 
 ## Filtrar registros de la tabla
 
-Los filtros dentro de nuestra tabla se usan a menudo cuando existe una cantidad considerable de registros dentro de nuestra tabla y queremos buscar alguno en especifico o algunos bajo algún criterio. Para realizar esto debemos llamar a un objeto especial que se encarga de realizar estos filtros. Este objeto es un **TableRowSorter** este objeto crea una copia del modelo de la tabla (quien contiene la información de esta) por lo que es un arreglo dinámico que podrá cambiar su contenido de acuerdo a un criterio, primero vamos a ejemplificarlo y como este sera una copia del modelo al momento de la ejemplificación debemos enviar al modelo como argumento.
+Los filtros dentro de nuestra tabla se usan a menudo cuando existe una cantidad considerable de registros dentro de esta y queremos buscar alguno en especifico o algunos bajo algún criterio. Para realizar esto debemos llamar a un objeto especial que se encarga de realizar estos filtros. Este objeto es un **TableRowSorter** este objeto crea una copia del modelo de la tabla (quien contiene la información de esta) por lo que es un arreglo dinámico que podrá cambiar su contenido de acuerdo a un criterio, primero vamos a ejemplificarlo y como este sera una copia del **modelo**, al momento de la ejemplificación debemos enviar al modelo como argumento.
 
 ```javascript
 public void filtrarRegistrosTabla(){
@@ -1293,7 +1294,7 @@ public void filtrarRegistrosTabla(){
 }
 ```
 
-Ahora debemos indicarle a la tabla que va a contener este elemento y asi puede estar preparada para realizar un filtro de la información:
+Ahora debemos indicarle a la tabla que va a contener este elemento y asi puede estar preparada para realizar un filtro de la información, esto lo realizamos con el método **setRowStorter**:
 
 ```javascript
 public void filtrarRegistrosTabla(){
@@ -1341,7 +1342,7 @@ Nuestro filtro esta listo, ahora si corremos nuestra aplicación, escribimos alg
 
 Nuestra tabla funciona de maravilla y ya podemos gestionar la información a traves de ella. Sin embargo, esta tabla se ve un poco mal con respecto a la interfaz que hemos estado manejando, es hora de personalizarla un poco y que tome un mejor aspecto. Vamos a dirigirnos al método **crearTable** de la clase **AmigosTemplate** y vamos a realizar algunas configuraciones que le darán un mejor aspecto.
 
-Para empezar podemos agregarle un alto a cada fila, ya que las filas están muy pegadas la una de la otra, esto con el método **setRowHeight** que recibe como parámetro un entero que representa la altura de cada fila. También podemos quitar las lineas que separan cada fila y cada columna, esto va dependiendo del diseño de cada desarrollador en este caso creemos que se vera mejor si omitimos estas lineas, para ocultar estas lineas podemos usar los métodos **setShowHorizontalLines y setShowVerticalLines** que ambos reciben como parámetro un booleano que si se deja en false, ocultara estas lineas
+Para empezar podemos agregarle un alto a cada fila, ya que las filas están muy pegadas la una de la otra, esto con el método **setRowHeight** que recibe como parámetro un entero que representa la altura de cada fila. También podemos quitar las lineas que separan cada fila y cada columna, esto va dependiendo del diseño de cada desarrollador en este caso creemos que se vera mejor si omitimos estas lineas, para ocultar estas lineas podemos usar los métodos **setShowHorizontalLines y setShowVerticalLines**, ambos reciben como parámetro un booleano que si se deja en false, ocultara estas lineas
 
 ```javascript
 public void crearJTable(){
@@ -1356,7 +1357,7 @@ public void crearJTable(){
     <p>Tabla con filas mas altas y sin las lineas que separan los registros</p>
 </div>
 
-Nuestra cabecera de la tabla esta un poco angosta ahora con respecto a los registros de la tabla, vamos a añadirle mas altura, para esto debemos tomar el objeto **header** que ya obtuvimos previamente de la tabla, para darle un tamaño tenemos que proporcionarle un tamaño y esto se realiza con el método **setPreferredSize**. 
+Nuestra cabecera de la tabla esta un poco angosta ahora con respecto a los registros de la tabla, vamos a añadirle mas altura, para esto debemos tomar el objeto **header** que ya obtuvimos previamente de la tabla. Para darle un tamaño al header tenemos que utilizar el método **setPreferredSize**. 
 
 ```javascript
 header.setPreferredSize();
@@ -1416,7 +1417,7 @@ Primero vamos a personalizar la cabecera de nuestra tabla, vamos a añadirle un 
 header.setDefaultRenderer();
 ```
 
-Dentro de este método, como parámetro vamos a tener que crear un objeto **DefaultRender** pero para esto tenemos un método en nuestro servicio llamado **devolverTablaPersonalizada**, que nos va a pedir varias cosas como parámetro:
+Dentro de este método, como parámetro vamos a tener que crear un objeto **DefaultRender**, pero para esto tenemos un método en nuestro servicio llamado **devolverTablaPersonalizada**, que nos va a pedir varias cosas como parámetro:
 
 * **ColorPrincipal:** Es el color principal que va a tener la tabla.
 * **ColorSecundario:** Es el color que complementa al color principal, si se pasan los dos colores la primera fila va a tomar el color primario, la segunda fila el color secundario y asi sucesivamente.

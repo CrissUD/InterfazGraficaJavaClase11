@@ -71,10 +71,10 @@ public class AmigosTemplate extends JPanel{
     }
 
     public void crearJTable(){
-        modelo= new DefaultTableModel();
+        modelo = new DefaultTableModel();
         modelo.setColumnIdentifiers(cabecera);
 
-        tabla= new JTable();
+        tabla = new JTable();
         tabla.setModel(modelo);
         tabla.addMouseListener(amigosComponent);
 
@@ -85,7 +85,7 @@ public class AmigosTemplate extends JPanel{
         header = tabla.getTableHeader();
         header.setPreferredSize(new Dimension(580, 30));
 
-        pTabla= sObjGraficos.construirPanelBarra(tabla, 10, 220, 580, 370, Color.WHITE, null);
+        pTabla = sObjGraficos.construirPanelBarra(tabla, 10, 220, 580, 370, Color.WHITE, null);
 
         header.setDefaultRenderer(sGraficosAvanzados.devolverTablaPersonalizada(
             sRecursos.getColorAzul(), null , null, Color.WHITE, sRecursos.getFontPequeña()
