@@ -111,9 +111,6 @@ public class GraficosAvanzadosService {
                     g2.setPaint(colorBarraNormal);
                 }
                 g2.fillRoundRect(r.x + 4, r.y, 8, r.height, 10, 10);
-                g2.setPaint(Color.WHITE);
-                g2.drawRoundRect(r.x + 4, r.y, 10, r.height, 10, 10);
-                g2.dispose();
             }
         
             @Override
