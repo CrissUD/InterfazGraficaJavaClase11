@@ -37,7 +37,7 @@ public class GraficosAvanzadosService {
     public DefaultTableCellRenderer devolverTablaPersonalizada(
         Color colorPrincipal, Color colorSecundario, Color colorSeleccion, Color colorFuente, Font fuente
     ){
-        class MiRender extends DefaultTableCellRenderer{
+        return new DefaultTableCellRenderer(){
             private static final long serialVersionUID = -8946942932242371111L;
 
             @Override
@@ -63,8 +63,7 @@ public class GraficosAvanzadosService {
                 }
                 return this;
             }
-        }
-        return new MiRender();
+        };
     }
 
     public BasicScrollBarUI devolverScrollPersonalizado(Color colorBarraNormal, Color colorBarraArrastrada){
