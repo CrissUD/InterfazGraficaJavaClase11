@@ -42,26 +42,22 @@ public class GraficosAvanzadosService {
 
             @Override
             public Component getTableCellRendererComponent(
-                JTable table, Object value, boolean isSelected, boolean hasFocus, int row,int column
+                JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column
             ){
-                JLabel cell = (JLabel) super.getTableCellRendererComponent (table, value, isSelected, hasFocus, row, column);
-                cell.getClass(); 
-                this.setOpaque(true);
-                this.setFont(fuente);
-                this.setHorizontalAlignment(SwingConstants.CENTER);
-                if (row % 2 != 0){
-                    this.setBackground(colorPrincipal);
-                    this.setForeground(colorFuente);
-                } 
-                else{
-                    this.setBackground(colorSecundario);
-                    this.setForeground(colorFuente);
+                JLabel celda = (JLabel) super.getTableCellRendererComponent (table, value, isSelected, hasFocus, row, column);
+                celda.setOpaque(true);
+                celda.setFont(fuente);
+                celda.setForeground(colorFuente);
+                celda.setHorizontalAlignment(SwingConstants.CENTER);
+                if (row % 2 != 0)
+                    celda.setBackground(colorPrincipal);
+                else
+                    celda.setBackground(colorSecundario);
+                if(isSelected){
+                    celda.setBackground(colorSeleccion);
+                    celda.setForeground(Color.WHITE);
                 }
-                if(isSelected==true){
-                    this.setBackground(colorSeleccion);
-                    this.setForeground(colorSecundario);
-                }
-                return this;
+                return celda;
             }
         };
     }
