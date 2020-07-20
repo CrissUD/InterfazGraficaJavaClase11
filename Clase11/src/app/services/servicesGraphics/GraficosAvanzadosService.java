@@ -1,9 +1,9 @@
 package app.services.servicesGraphics;
 
+import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -62,57 +62,51 @@ public class GraficosAvanzadosService {
         };
     }
 
-    public BasicScrollBarUI devolverScrollPersonalizado(Color colorBarraNormal, Color colorBarraArrastrada){
-        return new BasicScrollBarUI() {
-            private final Dimension d = new Dimension();
-        
+    public BasicScrollBarUI devolverScrollPersonalizado(
+        int grosor, int radio, Color colorFondo, Color colorBarraNormal, Color colorBarraArrastrada
+    ){
+        return new BasicScrollBarUI(){
+            private Dimension d = new Dimension();
+
             @Override
             protected JButton createDecreaseButton(int orientation) {
-                return new JButton() {
-                    private static final long serialVersionUID = -5412240959518806029L;
-                    @Override
-                    public Dimension getPreferredSize() {
-                        return d;
-                    }
-                };
+                JButton boton = new JButton();
+                boton.setPreferredSize(d);
+                return boton;
             }
         
             @Override
             protected JButton createIncreaseButton(int orientation) {
-                return new JButton() {
-                    private static final long serialVersionUID = 2093457850332785270L;
-                    @Override
-                    public Dimension getPreferredSize() {
-                        return d;
-                    }
-                };
+                JButton boton = new JButton();
+                boton.setPreferredSize(d);
+                return boton;
             }
         
             @Override
             protected void paintTrack(Graphics g, JComponent c, Rectangle r) {
+                g.setColor(colorFondo);
+                g.fillRect(r.x, r.y, r.width, r.height);
             }
         
             @Override
             protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
                 Graphics2D g2 = (Graphics2D) g.create();
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+                g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
                 JScrollBar sb = (JScrollBar) c;
-                if (!sb.isEnabled() || r.width > r.height) {
+                if (!sb.isEnabled())
                     return;
-                } else if (isDragging) {
+                else if (isDragging)
                     g2.setPaint(colorBarraArrastrada);
-                } else if (isThumbRollover()) {
+                else if (isThumbRollover())
                     g2.setPaint(colorBarraNormal);
-                } else {
+                else
                     g2.setPaint(colorBarraNormal);
-                }
-                g2.fillRoundRect(r.x + 4, r.y, 8, r.height, 10, 10);
-            }
-        
-            @Override
-            protected void setThumbBounds(int x, int y, int width, int height) {
-                super.setThumbBounds(x, y, width, height);
-                scrollbar.repaint();
+
+                if(r.width < r.height)
+                    g2.fillRoundRect((r.width - grosor) / 2, r.y, grosor, r.height, radio, radio);
+                else
+                    g2.fillRoundRect(r.x, (r.height - grosor) / 2, r.width, grosor, radio, radio);
             }
         };
     }

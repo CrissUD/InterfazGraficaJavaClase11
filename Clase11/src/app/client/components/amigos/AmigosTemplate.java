@@ -37,6 +37,7 @@ public class AmigosTemplate extends JPanel{
 
     // Declaración objetos para JTable
     private JScrollPane pTabla;
+    private JPanel pCorner;
     private JTable tabla;
     private JTableHeader header;
     private DefaultTableModel modelo;
@@ -97,8 +98,13 @@ public class AmigosTemplate extends JPanel{
         
         
         pTabla.getVerticalScrollBar().setUI(
-            sGraficosAvanzados.devolverScrollPersonalizado(Color.GRAY, sRecursos.getColorGrisOscuro())
+            sGraficosAvanzados.devolverScrollPersonalizado(
+                7, 10, Color.WHITE, Color.GRAY, sRecursos.getColorGrisOscuro()
+            )
         );
+        pCorner = new JPanel();
+        pCorner.setBackground(sRecursos.getColorAzul());
+        pTabla.setCorner(JScrollPane.UPPER_RIGHT_CORNER, pCorner);
         this.add(pTabla);
     }
 

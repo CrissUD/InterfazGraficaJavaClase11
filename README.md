@@ -729,6 +729,7 @@ Este enfoque es mucho mas acorde al que utilizamos por ejemplo en el login ya qu
 
 Ya tenemos listo todo para poder crear un objeto **JTable** y obtener información a traves de ella. Un objeto **JTable** es un objeto avanzado ya que generalmente no se crea unicamente el objeto y se adiciona como cualquier otro, ya que este depende de algunas partes para su creación completa, a continuación mencionamos los objetos necesarios y su función:
 * **JScrollPane**: Este es un tipo de panel especial que se caracteriza por contener Scrolls (Barras laterales) con las que el usuario puede navegar de forma vertical u horizontal, en nuestro caso una tabla puede contener una cantidad considerable de filas o columnas y ademas no tiene un tamaño fijo ya que en tiempo de ejecución se pueden agregar mas filas o columnas, por lo que no se puede agregar simplemente a un panel y especificarle un tamaño fijo, de ser asi mucha información no será visible para el usuario, es por eso que este tipo de panel cobra importancia y gracias a este podremos navegar dentro de la tabla y ver información que esta mas allá de los limites de nuestra interfaz.
+* **JPanel**: Este panel es opcional y representa el **Corner** dentro de un ScrollPane, el Corner es el espacio que existe entre los ScrollBar del panel y este panel se usa para cubrir esas zonas y se vea mucho mejor.
 * **JTable**: Este es el objeto principal y esta es la representación de la información en forma de tabla que el usuario podrá revisar, ademas es el medio por el cual se tendrá una interacción directa entre el usuario y la información.
 * **JTableHeader**: Este objeto se utiliza para dar una personalización gráfica al encabezado de la tabla.
 * **DefaultTableModel**: Este objeto es quizás el mas importante, ya que es el que realmente contiene la información y puede ser mostrada en la tabla, es decir que mientras la **JTable** muestra la información de forma organizada al usuario, es el **DefaultTableModel** el que se encarga de gestionar que información es la que contiene dicha tabla.
@@ -739,6 +740,7 @@ Vamos a realizar la declaración de cada uno de estos objetos:
 ```javascript
 // Declaración objetos para JTable
 private JScrollPane pTabla;
+private JPanel pCorner;
 private JTable tabla;
 private JTableHeader header;
 private DefaultTableModel modelo;
@@ -1394,7 +1396,7 @@ Vamos a crear un servicio llamado **GraficosAvanzadosService** y lo dejaremos de
 Este servicio ademas de la estructura básica de un servicio contiene varios métodos que realizan ciertas acciones las cuales en esta clase no vamos a explicar. Para obtener el código de este servicio usted puede copiarlo de este mismo repositorio entrando a las carpetas **Clase11/src/app/services/servicesGraphics/GraficosAvanzadosService** ahi encontrara el código.
 
 <div align='center'>
-    <img  src='https://i.imgur.com/BEpf47r.png'>
+    <img  src='https://i.imgur.com/5xjRQbj.png'>
     <p>Código dentro del servicio GraficosAvanzadosService</p>
 </div>
 
@@ -1450,7 +1452,7 @@ Vamos a ver como se ve nuestra interfaz:
 </div>
 
 
-Por ultimo y para finalizar vamos a cambiar el Scroll que acompaña a la tabla una vez hay muchos registros, este Scroll por defecto es algo anticuado y no se ve bien con respecto al resto de nuestra interfaz. Para esto le vamos a indicar a nuestro PaneScroll **pTabla** que vamos a editar el Scroll vertical, asi que debemos obtenerlo primero:
+Ahora vamos a cambiar el Scroll que acompaña a la tabla una vez hay muchos registros, este Scroll por defecto es algo anticuado y no se ve bien con respecto al resto de nuestra interfaz. Para esto le vamos a indicar a nuestro PaneScroll **pTabla** que vamos a editar el Scroll vertical, asi que debemos obtenerlo primero:
 
 ```javascript
 pTabla.getVerticalScrollBar();
@@ -1458,24 +1460,58 @@ pTabla.getVerticalScrollBar();
 
 Luego para darle una personalización debemos llamar al método **setUI** que va a pedir por parámetro un objeto tipo **BasicScrollBarUI** y con ayuda de nuestro servicio **GraficosAvanzadosService** y su método **devolverScrollPersonalizado** podemos realizar dicha personalización.
 
-Este método va a pedir dos cosas por parámetro:
+Este método va a pedir por parámetro:
 
+* El Grosor de la barra del Scroll.
+* El Radio de las esquinas de la barra del Scroll.
+* El color de fondo del ScrollBar.
 * El color de la barra.
 * El color de la barra una vez se esta arrastrando (moviendo con el botón del mouse oprimido).
 
 ```javascript
 pTabla.getVerticalScrollBar().setUI(
-    sGraficosAvanzados.devolverScrollPersonalizado(Color.GRAY, sRecursos.getColorGrisOscuro())
+    sGraficosAvanzados.devolverScrollPersonalizado(
+        7, 10, Color.WHITE, Color.GRAY, sRecursos.getColorGrisOscuro()
+    )
 );
 ```
 
-Finalmente nuestra tabla se vera de la siguiente manera:
+Nuestra tabla se vera de la siguiente manera:
 
 <div align='center'>
     <img  src='https://i.imgur.com/yByBis9.png'>
-    <p>Personalización total de nuestra tabla</p>
+    <p>Personalización del Scroll de la tabla.</p>
 </div>
 
+Por ultimo podemos notar que en la parte superior izquierda al lado de la cabecera hay un espacio que sobra, este espacio es conocido como el **Corner** del ScrollBar y podemos editarlo para que luzca como si fuera parte de la cabecera. Para esto vamos a usar nuestro panel **pCorner**, lo primero que haremos es ejemplificarlo de forma tradicional:
+
+```javascript
+// Dentro del método crearJTable
+pCorner = new JPanel();
+```
+Ahora vamos a indicarle que tenga un color de fondo azul al igual que la cabecera:
+```javascript
+// Dentro del método crearJTable
+pCorner = new JPanel();
+pCorner.setBackground(sRecursos.getColorAzul());
+```
+
+Por ultimo vamos a configurar ese **Corner** a nuestro **ScrollPane**, esto mediante el método **setCorner** que va a pedir por parámetros 2 cosas:
+* **Ubicación del corner:** Esto debido a que puede existir un espacio sobrante en distintas partes del **JScrollPane**, asi que hay que especificar en que esquina esta ubicado el Corner a editar.
+* **Corner:** Es el objeto gráfico que va a cubrir el espacio, en este caso un panel.
+
+```javascript
+// Dentro del método crearJTable
+pCorner = new JPanel();
+pCorner.setBackground(sRecursos.getColorAzul());
+pTabla.setCorner(JScrollPane.UPPER_RIGHT_CORNER, pCorner);
+```
+
+Finalmente nuestra tabla se ve asi:
+<div align='center'>
+    <img  src='https://i.imgur.com/K8JYhqm.png'>
+    <p>Personalización total de la tabla.</p>
+</div>
 
 # Resultado 
 
