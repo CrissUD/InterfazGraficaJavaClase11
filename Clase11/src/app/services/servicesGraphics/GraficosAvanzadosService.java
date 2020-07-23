@@ -28,6 +28,8 @@ import javax.swing.border.Border;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 import javax.swing.table.DefaultTableCellRenderer;
 
+/** @author Cristian Felipe Patiño Cáceres */
+
 public class GraficosAvanzadosService {
     
     static private GraficosAvanzadosService servicio;
@@ -111,67 +113,67 @@ public class GraficosAvanzadosService {
         };
     }
 
-    public Border devolverBordeDifuminado(Color colorBase){
+    public Border devolverBordeDifuminado(Color colorBase, int grosor){
         Border bordeFinal = null;
-        Color siguienteColor = new Color(colorBase.getRed()+4, colorBase.getGreen()+4, colorBase.getBlue()+4);
+        Border bordeInicial =  BorderFactory.createLineBorder(colorBase, 1, true);  
+        Color siguienteColor = new Color(colorBase.getRed() + 5, colorBase.getGreen() + 5, colorBase.getBlue() + 5);
         int contador = 0;
-        while(siguienteColor.getRed() < 255){
-            if(contador == 0){ 
-                Border borde1=  BorderFactory.createLineBorder(colorBase,1,true);  
-                Border borde2=  BorderFactory.createLineBorder(siguienteColor,1,true);
-                bordeFinal = BorderFactory.createCompoundBorder(borde2,borde1);
-            }
-            else{
-                siguienteColor = new Color(siguienteColor.getRed()+4, siguienteColor.getGreen()+4, siguienteColor.getBlue()+4);
-                Border borde=  BorderFactory.createLineBorder(siguienteColor,1,true);
-                bordeFinal = BorderFactory.createCompoundBorder(borde, bordeFinal);
-            }
+        while(
+            siguienteColor.getRed() < 251 && siguienteColor.getGreen() < 251 && 
+            siguienteColor.getBlue() < 251 && contador < grosor
+        ){
+            Border bordeExterno =  BorderFactory.createLineBorder(siguienteColor, 1, true);
+            if(contador == 0)
+                bordeFinal = BorderFactory.createCompoundBorder(bordeExterno, bordeInicial);
+            else
+                bordeFinal = BorderFactory.createCompoundBorder(bordeExterno, bordeFinal);
+            siguienteColor = new Color(
+                siguienteColor.getRed() + 5, siguienteColor.getGreen() + 5, siguienteColor.getBlue() + 5
+            );
             contador ++;
         }
         return bordeFinal;
     }
     
     public Border DibujarBordeRedondeado (Color color, int radio, boolean esLineal, Image imagen) {
-        Border bordeRedondeado = new Border() {
+        Border bordeRedondeado = new Border(){
 
             @Override
             public void paintBorder(Component c, Graphics g, int x, int y, int ancho, int alto) {
                 Graphics2D g2= (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-                Area area = new Area();
+                Area area;
                 Component padreContenedor  = c.getParent();
                 RoundRectangle2D rectanguloBordeado = new RoundRectangle2D.Double();
-                rectanguloBordeado.setRoundRect(x, y, ancho-1, alto-1, radio, radio);
-                if (padreContenedor != null) {
-                    if(esLineal){
-                        diburjarFondo(c, padreContenedor, imagen, g2, ancho, alto);
-                        dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, rectanguloBordeado);
-                    }
-                    else{
-                        area = dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, rectanguloBordeado);
-                        diburjarFondo(c, padreContenedor, imagen, g2, ancho, alto);
-                        g2.setClip(null);
-                        g2.draw(area);
-                    }
+                rectanguloBordeado.setRoundRect(x, y, ancho - 1, alto - 1, radio, radio);
+                if(esLineal){
+                    dibujarFondo(c, padreContenedor, imagen, g2, ancho, alto);
+                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, rectanguloBordeado);
                 }
+                else{
+                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, rectanguloBordeado);
+                    dibujarFondo(c, padreContenedor, imagen, g2, ancho, alto);
+                }
+                g2.setClip(null);
+                g2.draw(area);
             }
+
             @Override
-            public Insets getBorderInsets(Component cmpnt) {
-                return new Insets(radio+1, radio+1, radio+2, radio);
+            public Insets getBorderInsets(Component c) {
+                return new Insets(2, 2, 2, 2);
             }
 
             @Override
             public boolean isBorderOpaque() {
-                return true;
+                return false;
             }
-        } ;
+        };
         return bordeRedondeado;
     }
     
     public AbstractBorder DibujarBordeCircular(Color color, boolean esLineal, Image imagen) {
         AbstractBorder bordeCircular = new AbstractBorder() {
-        
             private static final long serialVersionUID = 2009875951859777681L;
 
             @Override
@@ -179,31 +181,29 @@ public class GraficosAvanzadosService {
                 Graphics2D g2 = (Graphics2D) g;
                 g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
                 g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
-                Area area = new Area();
+                Area area;
                 Component padreContenedor  = c.getParent();
                 Ellipse2D circulo = new Ellipse2D.Double();
                 circulo.setFrameFromCenter( 
                     new Point(x + ancho / 2, y + alto / 2),
                     new Point(ancho, alto)
                 );
-                if (padreContenedor != null) {
-                    if(esLineal){
-                        diburjarFondo(c, padreContenedor, imagen, g2, ancho, alto);
-                        dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, circulo);
-                    }
-                    else{
-                        area = dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, circulo);
-                        diburjarFondo(c, padreContenedor, imagen, g2, ancho, alto);
-                        g2.setClip(null);
-                        g2.draw(area);
-                    }
+                if(esLineal){
+                    dibujarFondo(c, padreContenedor, imagen, g2, ancho, alto);
+                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, circulo);
                 }
+                else{
+                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, circulo);
+                    dibujarFondo(c, padreContenedor, imagen, g2, ancho, alto);
+                }
+                g2.setClip(null);
+                g2.draw(area);
             }
         };
         return bordeCircular;
     }
 
-    public void diburjarFondo(Component c, Component padreContenedor, Image imagen, Graphics2D g2, int ancho, int alto){
+    public void dibujarFondo(Component c, Component padreContenedor, Image imagen, Graphics2D g2, int ancho, int alto){
         if(imagen != null)
             g2.drawImage(
                 imagen, 
@@ -212,8 +212,7 @@ public class GraficosAvanzadosService {
                 c
             );
         else{
-            Color colorFondo = padreContenedor.getBackground();
-            g2.setColor(colorFondo);
+            g2.setColor(padreContenedor.getBackground());
             g2.fillRect(0, 0, ancho, alto);
         }
     }
@@ -227,12 +226,9 @@ public class GraficosAvanzadosService {
             g2.setPaint(color);
         Area area = new Area(figura);
         Rectangle rectangulo = new Rectangle(0,0,ancho, alto);
-        Area RegionBorde = new Area(rectangulo);
-        RegionBorde.subtract(area);
-        g2.setClip(RegionBorde);
-        if(esLineal)
-            g2.setClip(null);
-            g2.draw(area);
+        Area regionBorde = new Area(rectangulo);
+        regionBorde.subtract(area);
+        g2.setClip(regionBorde);
         return area;
     }
     
