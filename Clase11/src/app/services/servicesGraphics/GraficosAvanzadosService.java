@@ -149,10 +149,10 @@ public class GraficosAvanzadosService {
                 rectanguloBordeado.setRoundRect(x, y, ancho - 1, alto - 1, radio, radio);
                 if(esLineal){
                     dibujarFondo(c, padreContenedor, imagen, g2, ancho, alto);
-                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, rectanguloBordeado);
+                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, rectanguloBordeado);
                 }
                 else{
-                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, rectanguloBordeado);
+                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, rectanguloBordeado);
                     dibujarFondo(c, padreContenedor, imagen, g2, ancho, alto);
                 }
                 g2.setClip(null);
@@ -190,10 +190,10 @@ public class GraficosAvanzadosService {
                 );
                 if(esLineal){
                     dibujarFondo(c, padreContenedor, imagen, g2, ancho, alto);
-                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, circulo);
+                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, circulo);
                 }
                 else{
-                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, esLineal, circulo);
+                    area = dibujarBorde(c, g2, color, x, y, ancho, alto, circulo);
                     dibujarFondo(c, padreContenedor, imagen, g2, ancho, alto);
                 }
                 g2.setClip(null);
@@ -218,7 +218,7 @@ public class GraficosAvanzadosService {
     }
 
     public Area dibujarBorde(
-        Component c, Graphics2D g2, Color color, int x, int y, int ancho, int alto, boolean esLineal, RectangularShape figura
+        Component c, Graphics2D g2, Color color, int x, int y, int ancho, int alto, RectangularShape figura
     ){
         if(color == null)
             g2.setPaint(c.getBackground());
