@@ -1,6 +1,6 @@
-Clases,Clases a la comunidad que complementan el pensum común.,Clase11/resources/img/clases.png
-Clases Virtuales,Cursos virtuales como medio de enseñanza.,Clase11/resources/img/pantalla.png
-Generación de ideas,Desarrollo de ideas con tecnologías actuales.,Clase11/resources/img/ideas.png
-Notificaciones,Notificación el estado de tus cursos y actividades.,Clase11/resources/img/celular.png
-Estadísticas,Gestión de participación en nuestros cursos.,Clase11/resources/img/estadisticas.png
-Dirección,Damos direcciónamiento a nuestros estudiantes.,Clase11/resources/img/direccion.png
+Clases,Clases a la comunidad que complementan el pensum común.,Clase11/resources/images/acciones/clases.png
+Clases Virtuales,Cursos virtuales como medio de enseñanza.,Clase11/resources/images/acciones/pantalla.png
+Generación de ideas,Desarrollo de ideas con tecnologías actuales.,Clase11/resources/images/acciones/ideas.png
+Notificaciones,Notificación el estado de tus cursos y actividades.,Clase11/resources/images/acciones/celular.png
+Estadísticas,Gestión de participación en nuestros cursos.,Clase11/resources/images/acciones/estadisticas.png
+Dirección,Damos direcciónamiento a nuestros estudiantes.,Clase11/resources/images/acciones/direccion.png

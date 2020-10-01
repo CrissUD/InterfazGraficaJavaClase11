@@ -1,23 +1,23 @@
 package app.client.components.inicio;
 
-import app.services.servicesLogic.AccionService;
+import app.services.logicServices.AccionService;
+
 import models.Accion;
 
 public class InicioComponent {
+  private InicioTemplate inicioTemplate;
+  private AccionService sAccion;
 
-    private InicioTemplate inicioTemplate;
-    private AccionService sAccion;
+  public InicioComponent() {
+    sAccion = AccionService.getService();
+    this.inicioTemplate = new InicioTemplate(this);
+  }
 
-    public InicioComponent(){
-        sAccion = AccionService.getService();
-        this.inicioTemplate=  new InicioTemplate(this);
-    }
-    
-    public Accion obtenerAccion(int numeroAccion){
-        return sAccion.devolverAccion(numeroAccion);
-    }
+  public Accion obtenerAccion(int numeroAccion) {
+    return sAccion.devolverAccion(numeroAccion);
+  }
 
-    public InicioTemplate getInicioTemplate() {
-        return this.inicioTemplate;
-    }
+  public InicioTemplate getInicioTemplate() {
+    return this.inicioTemplate;
+  }
 }

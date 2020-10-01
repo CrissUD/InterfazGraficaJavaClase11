@@ -34,7 +34,7 @@ private Border borderAzul;
 * **Ejemplificación**
 ```javascript
 // Dentro del constructor
-borderAzul = BorderFactory.createLineBorder(colorAzul, 2, true);
+borderAzul = BorderFactory.createLineBorder(colorPrincipal, 2, true);
 ```
 
 * **Método get**
@@ -431,7 +431,7 @@ public void crearContenidoPOpciones(){
     // BOTÓN FILTRAR--------------------------------------------------------------------
     bFiltrar = sObjGraficos.construirJButton(
         "Filtrar", 430, 65, 120, 35, sRecursos.getCMano(), null, sRecursos.getFontBotones(), 
-        sRecursos.getColorAzul(), Color.WHITE, null, "c", true
+        sRecursos.getColorPrincipal(), Color.WHITE, null, "c", true
     );
     bFiltrar.addMouseListener(amigosComponent);
     bFiltrar.addActionListener(amigosComponent);
@@ -440,7 +440,7 @@ public void crearContenidoPOpciones(){
     // BOTÓN MOSTRAR--------------------------------------------------------------------
     bMostrar = sObjGraficos.construirJButton(
         "Mostrar", 20, 145, 120, 35, sRecursos.getCMano(), null, sRecursos.getFontBotones(), 
-        sRecursos.getColorAzul(), Color.WHITE, null, "c", true
+        sRecursos.getColorPrincipal(), Color.WHITE, null, "c", true
     );
     bMostrar.addMouseListener(amigosComponent);
     bMostrar.addActionListener(amigosComponent);
@@ -449,7 +449,7 @@ public void crearContenidoPOpciones(){
     // BOTÓN INSERTAR--------------------------------------------------------------------
     bInsertar = sObjGraficos.construirJButton(
         "Insertar", 160, 145, 120, 35, sRecursos.getCMano(), null, sRecursos.getFontBotones(), 
-        sRecursos.getColorAzul(), Color.WHITE, null, "c", true
+        sRecursos.getColorPrincipal(), Color.WHITE, null, "c", true
     );
     bInsertar.addMouseListener(amigosComponent);
     bInsertar.addActionListener(amigosComponent);
@@ -458,7 +458,7 @@ public void crearContenidoPOpciones(){
     // BOTÓN MODIFICAR--------------------------------------------------------------------
     bModificar = sObjGraficos.construirJButton(
         "Modificar", 300, 145, 120, 35, sRecursos.getCMano(), null, sRecursos.getFontBotones(), 
-        sRecursos.getColorAzul(), Color.WHITE, null, "c", true
+        sRecursos.getColorPrincipal(), Color.WHITE, null, "c", true
     );
     bModificar.addMouseListener(amigosComponent);
     bModificar.addActionListener(amigosComponent);
@@ -467,7 +467,7 @@ public void crearContenidoPOpciones(){
     // BOTÓN ELIMINAR--------------------------------------------------------------------
     bEliminar= sObjGraficos.construirJButton(
         "Eliminar", 440, 145, 120, 35, sRecursos.getCMano(), null, sRecursos.getFontBotones(), 
-        sRecursos.getColorAzul(), Color.WHITE, null, "c", true
+        sRecursos.getColorPrincipal(), Color.WHITE, null, "c", true
     );
     bEliminar.addMouseListener(amigosComponent);
     bEliminar.addActionListener(amigosComponent);
@@ -519,13 +519,13 @@ public void crearContenidoPDatos(){
     // LABEL ID ----------------------------------------------------------------
     lId = sObjGraficos.construirJLabel(
         "Id Contacto:", 20, 140, 160, 30, null, 
-        sRecursos.getColorAzulOscuro(), null, sRecursos.getFontPequeña(), "l"
+        sRecursos.getColorPrincipalOscuro(), null, sRecursos.getFontPequeña(), "l"
     );
     pDatos.add(lId);
 
     // LABEL ID CONTENIDO ----------------------------------------------------------
     lIdValor = sObjGraficos.construirJLabel(
-        "0", 120, 140, 160, 30, null, sRecursos.getColorAzulOscuro(), 
+        "0", 120, 140, 160, 30, null, sRecursos.getColorPrincipalOscuro(), 
         null, sRecursos.getFontPequeña(), "l"
     );
     pDatos.add(lIdValor);
@@ -533,7 +533,7 @@ public void crearContenidoPDatos(){
     // LABEL NOMBRE ----------------------------------------------------------------
     lNombre = sObjGraficos.construirJLabel(
         "Nombre Contacto:", 20, 180, 160, 30, null, 
-        sRecursos.getColorAzulOscuro(), null, sRecursos.getFontPequeña(), "l"
+        sRecursos.getColorPrincipalOscuro(), null, sRecursos.getFontPequeña(), "l"
     );
     pDatos.add(lNombre);
 
@@ -548,7 +548,7 @@ public void crearContenidoPDatos(){
     // LABEL EDAD ----------------------------------------------------------------
     lEdad = sObjGraficos.construirJLabel(
         "Edad Contacto:", 20, 265, 160, 30, null, 
-        sRecursos.getColorAzulOscuro(), null, sRecursos.getFontPequeña(), "l"
+        sRecursos.getColorPrincipalOscuro(), null, sRecursos.getFontPequeña(), "l"
     );
     pDatos.add(lEdad);
 
@@ -563,7 +563,7 @@ public void crearContenidoPDatos(){
     // LABEL OFICIO ----------------------------------------------------------------
     lOficio = sObjGraficos.construirJLabel(
         "Oficio Contacto:", 20, 350, 160, 30, null, 
-        sRecursos.getColorAzulOscuro(), null, sRecursos.getFontPequeña(), "l"
+        sRecursos.getColorPrincipalOscuro(), null, sRecursos.getFontPequeña(), "l"
     );
     pDatos.add(lOficio);
 
@@ -578,7 +578,7 @@ public void crearContenidoPDatos(){
     // LABEL TELEFONO ----------------------------------------------------------------
     lTelefono = sObjGraficos.construirJLabel(
         "Telefono Contacto:", 20, 425, 160, 30, null, 
-        sRecursos.getColorAzulOscuro(), null, sRecursos.getFontPequeña(), "l"
+        sRecursos.getColorPrincipalOscuro(), null, sRecursos.getFontPequeña(), "l"
     );
     pDatos.add(lTelefono);
 
@@ -593,7 +593,7 @@ public void crearContenidoPDatos(){
     // LABEL EMAIL ----------------------------------------------------------------
     lEmail = sObjGraficos.construirJLabel(
         "Email Contacto:", 20, 510, 160, 30, null, 
-        sRecursos.getColorAzulOscuro(), null, sRecursos.getFontPequeña(), "l"
+        sRecursos.getColorPrincipalOscuro(), null, sRecursos.getFontPequeña(), "l"
     );
     pDatos.add(lEmail);
 
@@ -681,7 +681,7 @@ Para el caso de los botones vamos a configurar un cambio de color una vez se pas
 public void mouseEntered(MouseEvent e) {
     if(e.getSource() instanceof JButton){
         JButton boton = ((JButton) e.getSource());
-        boton.setBackground(RecursosService.getService().getColorAzulOscuro());
+        boton.setBackground(RecursosService.getService().getColorPrincipalOscuro());
     }
 }
 
@@ -689,7 +689,7 @@ public void mouseEntered(MouseEvent e) {
 public void mouseExited(MouseEvent e) {
     if(e.getSource() instanceof JButton){
         JButton boton = ((JButton) e.getSource());
-        boton.setBackground(RecursosService.getService().getColorAzul());
+        boton.setBackground(RecursosService.getService().getColorPrincipal());
     }
 }
 ```
@@ -1431,7 +1431,7 @@ Para el caso del Header, como este solo representa una fila unicamente vamos a e
 
 ```javascript
 header.setDefaultRenderer(sGraficosAvanzados.devolverTablaPersonalizada(
-    sRecursos.getColorAzul(), null , null, Color.WHITE, sRecursos.getFontPequeña()
+    sRecursos.getColorPrincipal(), null , null, Color.WHITE, sRecursos.getFontPequeña()
 ));
 ```
 
@@ -1439,7 +1439,7 @@ Vamos a hacer lo mismo para la tabla, pero esta vez vamos a enviar todos los par
 
 ```javascript
 tabla.setDefaultRenderer(Object.class, sGraficosAvanzados.devolverTablaPersonalizada(
-    Color.WHITE, sRecursos.getColorGrisClaro() , sRecursos.getColorAzulOscuro(), 
+    Color.WHITE, sRecursos.getColorGrisClaro() , sRecursos.getColorPrincipalOscuro(), 
     sRecursos.getColorGrisOscuro(), sRecursos.getFontPequeña()
 ));
 ```
@@ -1493,7 +1493,7 @@ Ahora vamos a indicarle que tenga un color de fondo azul al igual que la cabecer
 ```javascript
 // Dentro del método crearJTable
 pCorner = new JPanel();
-pCorner.setBackground(sRecursos.getColorAzul());
+pCorner.setBackground(sRecursos.getColorPrincipal());
 ```
 
 Por ultimo vamos a configurar ese **Corner** a nuestro **ScrollPane**, esto mediante el método **setCorner** que va a pedir por parámetros 2 cosas:
@@ -1503,7 +1503,7 @@ Por ultimo vamos a configurar ese **Corner** a nuestro **ScrollPane**, esto medi
 ```javascript
 // Dentro del método crearJTable
 pCorner = new JPanel();
-pCorner.setBackground(sRecursos.getColorAzul());
+pCorner.setBackground(sRecursos.getColorPrincipal());
 pTabla.setCorner(JScrollPane.UPPER_RIGHT_CORNER, pCorner);
 ```
 

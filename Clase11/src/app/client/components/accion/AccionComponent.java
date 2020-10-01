@@ -1,20 +1,15 @@
 package app.client.components.accion;
 
-import javax.swing.ImageIcon;
+import models.Accion;
 
 public class AccionComponent {
+  private AccionTemplate accionTemplate;
 
-    private AccionTemplate accionTemplate;
+  public AccionComponent(Accion accion) {
+    this.accionTemplate = new AccionTemplate(this, accion);
+  }
 
-    public AccionComponent(
-        ImageIcon imagen, String titulo, String parrafo
-    ){
-        this.accionTemplate= new AccionTemplate(
-            this, imagen, titulo, parrafo
-        );
-    }
-
-    public AccionTemplate getAccionTemplate(){
-        return accionTemplate;
-    }
+  public AccionTemplate getAccionTemplate() {
+    return accionTemplate;
+  }
 }
