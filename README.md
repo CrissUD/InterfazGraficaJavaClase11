@@ -1515,7 +1515,7 @@ Finalmente nuestra tabla se ve asi:
 
 # Resultado 
 
-Si has llegado hasta aquí **!Felicidades!** has aprendido las partes para construir tablas, como gestionar información a traves de Tablas, como dar cierta interactividad a estas y ademas has aprendido como personalizarlas. En la siguiente clase vamos a ver animaciones para darle ese toque final de interactividad a nuestro proyecto.
+Si has llegado hasta aquí **¡Felicidades!** has aprendido las partes para construir tablas, como gestionar información a traves de Tablas, como dar cierta interactividad a estas y además has aprendido como personalizarlas. En la siguiente clase vamos a ver animaciones para darle ese toque final de interactividad a nuestro proyecto.
 
 # Actividad 
 
