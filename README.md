@@ -10,21 +10,21 @@ Curso propuesto por el grupo de trabajo Semana de Ingenio y Diseño (**SID**) de
 
 ## Objetivos
 
-* Examinar las características principales del objeto gráfico JTable y como podemos crearla, y gestionarla para nuestras interfaces gráficas.
-* Reconocer el propósito del uso de tablas dentro de nuestras interfaces y como gestionar la información a través de estas.
+* Examinar las características principales del objeto gráfico JTable y como podemos crearla, y gestionarla para interfaces gráficas.
+* Reconocer el propósito del uso de tablas dentro de las interfaces y como gestionar la información a través de estas.
 * Identificar las acciónes principales de gestión de información en una tabla tal como insertar información, modificarla, filtrarla y eliminarla.
 * Personalizar la tabla con estilos para que esta pueda tener un aspecto conforme con el resto de la interfaz gráfica.
 
 # Antes de Comenzar
 
-Dentro de nuestro paquete **archives** vamos a agregar otro archivo plano llamado **amigos.txt** que contendrá información general de los contactos que vamos a gestionar. Este archivo planos lo puede encontrar en este mismo repositorio entrando a la carpeta **Clase11** seguido de la carpeta **src** y luego en la carpeta **archives**.
+Dentro del paquete **archives** vamos a agregar otro archivo plano llamado **amigos.txt** que contendrá información general de los contactos que vamos a gestionar. Este archivo planos lo puede encontrar en este mismo repositorio entrando a la carpeta **Clase11** seguido de la carpeta **src** y luego en la carpeta **archives**.
 
 <div align='center'>
     <img  src='https://i.imgur.com/qQxza9B.png'>
     <p>Se inserta archivo plano dentro del paquete archives.</p>
 </div>
 
-Vamos a crear un borde lineal de color azul en nuestro servicio **RecursosService**.
+Vamos a crear un borde lineal de color azul en el servicio **RecursosService**.
 
 * **Declaración:**
 ```javascript
@@ -44,7 +44,7 @@ public Border getBorderAzul(){
 }
 ```
 
-Recordando un poco nuestro recorrido, hemos utilizado los servicios para gestionar varias cosas dentro de nuestro proyecto, una de estas fue la generación automática de la reutilización del componente **Accion** a traves de la obtención de la información externa. Por otra parte ahora gestionamos **el ingreso de nuestra aplicación** a traves de algunos usuarios que han sido registrados y están contenidos de forma persistente (archivo plano) y gracias a los servicios no solo podemos controlar el ingreso único de estos usuarios sino que ademas podemos gestionar la información de estos a traves de varias partes de nuestro proyecto de forma independiente.
+Recordando un poco el recorrido, hemos utilizado los servicios para gestionar varias cosas dentro del proyecto, una de estas fue la generación automática de la reutilización del componente **Accion** a traves de la obtención de la información externa. Por otra parte ahora gestionamos **el ingreso de la aplicación** a traves de algunos usuarios que han sido registrados y están contenidos de forma persistente (archivo plano) y gracias a los servicios no solo podemos controlar el ingreso único de estos usuarios sino que ademas podemos gestionar la información de estos a traves de varias partes del proyecto de forma independiente.
 
 # Creación y gestión de tablas
 
@@ -137,7 +137,7 @@ public class Amigo {
 }
 ```
 
-Como suponemos que esta información la vamos a recibir desde una fuente foránea vamos a crear un controlador externo que se encarga de gestionar esta información y con la cual nuestra aplicación va a interactuar.
+Como suponemos que esta información la vamos a recibir desde una fuente foránea vamos a crear un controlador externo que se encarga de gestionar esta información y con la cual la aplicación va a interactuar.
 
 <div align='center'>
     <img  src='https://i.imgur.com/tyMmpt6.png'>
@@ -202,14 +202,14 @@ public ArrayList<Amigo> getAmigos(){
 }
 ```
 
-Es hora de crear nuestro Servicio este sera el servicio **AmigoService** y estará dentro del paquéte **ServicesLogic**:
+Es hora de crear el servicio este sera el servicio **AmigoService** y estará dentro del paquéte **ServicesLogic**:
 
 <div align='center'>
     <img  src='https://i.imgur.com/WVRzz2r.png'>
     <p>Creación del servicio dentro del paquete ServicesLogic</p>
 </div>
 
-Como ya vimos a lo largo del curso vamos a crear el mecanismo para una ejemplificación única de nuestro servicio dejando nuestro constructor publica para dar posibilidad a la creación de mas ejemplificaciones en caso de ser necesario:
+Como ya vimos a lo largo del curso vamos a crear el mecanismo para una ejemplificación única del servicio dejando el constructor publica para dar posibilidad a la creación de mas ejemplificaciones en caso de ser necesario:
 
 * **Declaración referencia estática de si mismo:**
 ```javascript
@@ -274,7 +274,7 @@ public int devolverCantidadAmigos(){
 
 ## Preparación del Componente Gráfico Amigos
 
-Ya tenemos lista toda la parte del manejo de la información externa dentro de nuestro proyecto ahora vamos a construir nuestro componente Gráfico **Amigos** y asi tener todo listo para el manejo de **JTable** dentro de el. Lo primero que vamos a realizar es la configuración necesaria dentro de nuestra clase **AmigosComponent**, dentro de este componente vamos a gestionar algunos eventos por lo que vamos a implementar las interfaces que necesitemos:
+Ya tenemos lista toda la parte del manejo de la información externa dentro del proyecto ahora vamos a construir el componente Gráfico **Amigos** y asi tener todo listo para el manejo de **JTable** dentro de el. Lo primero que vamos a realizar es la configuración necesaria dentro de la clase **AmigosComponent**, dentro de este componente vamos a gestionar algunos eventos por lo que vamos a implementar las interfaces que necesitemos:
 
 ```javascript
 public class AmigosComponent implements ActionListener, MouseListener, FocusListener {
@@ -283,7 +283,7 @@ public class AmigosComponent implements ActionListener, MouseListener, FocusList
 }
 ```
 
-Se puede notar que nuestro componente va a implementar 3 interfaces, **ActionListener**, **MouseListener** y **FocusListener**. Hasta el momento hemos revisado las dos primeras interfaces, la tercera la estamos usando por primera vez. Esta interfaz va a escuchar eventos cada vez que un elemento que escuche a este tipo de eventos sea seleccionado, cuando implementemos este tipo de eventos se hará una mayor explicación, por ahora vamos a implementar todos los métodos correspondientes a cada interfaz:
+Se puede notar que el componente va a implementar 3 interfaces, **ActionListener**, **MouseListener** y **FocusListener**. Hasta el momento hemos revisado las dos primeras interfaces, la tercera la estamos usando por primera vez. Esta interfaz va a escuchar eventos cada vez que un elemento que escuche a este tipo de eventos sea seleccionado, cuando implementemos este tipo de eventos se hará una mayor explicación, por ahora vamos a implementar todos los métodos correspondientes a cada interfaz:
 
 ```javascript
 // MÉTODO IMPLEMENTADO DE ACTIONLISTENER
@@ -329,7 +329,7 @@ public AmigosComponent() {
 }
 ```
 
-Ademas de esto vamos a declarar dos atributos que nos serán útiles para algunas cosas que realizaremos mas adelante, el primero sera un objeto de tipo **Amigo**(Modelo) el segundo sera un arreglo de Strings que contiene todos los *placeholders* de nuestros JTextFields:
+Ademas de esto vamos a declarar dos atributos que nos serán útiles para algunas cosas que realizaremos mas adelante, el primero sera un objeto de tipo **Amigo**(Modelo) el segundo sera un arreglo de Strings que contiene todos los *placeholders* de los JTextFields:
 ```javascript
 private Amigo amigo;
 private String[] placeholdes = {"Nombre","Edad","Oficio","Telefono","Email","Filtrar..."};
@@ -396,7 +396,7 @@ public void crearJPanels(){
 this.crearJPanels();
 ```
 
-Nuestra aplicación se vera algo asi:
+La aplicación se vera algo asi:
 <div align='center'>
     <img  src='https://i.imgur.com/JRovJf9.png'>
     <p>Maquetación de los paneles dentro del componente Amigos</p>
@@ -482,7 +482,7 @@ Se puede observar que dentro de la construcción de cada botón estamos añadien
 this.crearContenidoPOpciones();
 ```
 
-Nuestra interfaz se vera algo así:
+La interfaz se vera algo así:
 
 <div align='center'>
     <img  src='https://i.imgur.com/Bhv2UV4.png'>
@@ -614,7 +614,7 @@ Podemos notar que los JTextFields adicionan la escucha a los eventos **FocusList
 this.crearContenidoPDatos();
 ```
 
-Nuestra aplicación se ve de la siguiente manera:
+La aplicación se ve de la siguiente manera:
 <div align='center'>
     <img  src='https://i.imgur.com/GaokBcw.png'>
     <p>Incorporación de contenido del panel pDatos.</p>
@@ -671,7 +671,7 @@ public JTextField getTConsulta(){
 }
 ```
 
-Ya esta casi todo listo, falta configurar los eventos, los eventos de **acción** los revisaremos en la siguiente sección, vamos a utilizar nuestros eventos del **Mouse** y de tipo **Enfoque**(Focus) para darle algo de interactividad a nuestro componente, nos ubicamos en nuestra clase **AmigosComponent**.
+Ya esta casi todo listo, falta configurar los eventos, los eventos de **acción** los revisaremos en la siguiente sección, vamos a utilizar los eventos del **Mouse** y de tipo **Enfoque**(Focus) para darle algo de interactividad al componente, nos ubicamos en la clase **AmigosComponent**.
 
 ### **Eventos MouseListener**
 
@@ -700,7 +700,7 @@ En el anterior código realizamos una **Ejemplificación única de objetos de un
 
 Ahora vamos a configurar los métodos relacionados con la interfaz **FocusListener**. 
 
-El método **focusGained** realiza una acción cada vez que un elemento esta seleccionado y se esta enfocando en el, en este caso los JTextfield son los que están escuchando este tipo de eventos, queremos que cuando se seleccione cualquiera de estos, cambie a tener un borde azul y en caso de contener el placeholder, este se retire. Para obtener el borde azul vamos a hacer uso del servicio **RecursosService** y para verificar si alguno de estos JTextfield contiene su placeholder correspondiente vamos a ayudarnos de nuestro atributo **placegolders** que contiene todos estos:
+El método **focusGained** realiza una acción cada vez que un elemento esta seleccionado y se esta enfocando en el, en este caso los JTextfield son los que están escuchando este tipo de eventos, queremos que cuando se seleccione cualquiera de estos, cambie a tener un borde azul y en caso de contener el placeholder, este se retire. Para obtener el borde azul vamos a hacer uso del servicio **RecursosService** y para verificar si alguno de estos JTextfield contiene su placeholder correspondiente vamos a ayudarnos del atributo **placegolders** que contiene todos estos:
 
 ```javascript
 @Override
@@ -728,7 +728,7 @@ Este enfoque es mucho mas acorde al que utilizamos por ejemplo en el login ya qu
 # Creación de JTable y sus partes
 
 Ya tenemos listo todo para poder crear un objeto **JTable** y obtener información a traves de ella. Un objeto **JTable** es un objeto avanzado ya que generalmente no se crea unicamente el objeto y se adiciona como cualquier otro, ya que este depende de algunas partes para su creación completa, a continuación mencionamos los objetos necesarios y su función:
-* **JScrollPane**: Este es un tipo de panel especial que se caracteriza por contener Scrolls (Barras laterales) con las que el usuario puede navegar de forma vertical u horizontal, en nuestro caso una tabla puede contener una cantidad considerable de filas o columnas y ademas no tiene un tamaño fijo ya que en tiempo de ejecución se pueden agregar mas filas o columnas, por lo que no se puede agregar simplemente a un panel y especificarle un tamaño fijo, de ser asi mucha información no será visible para el usuario, es por eso que este tipo de panel cobra importancia y gracias a este podremos navegar dentro de la tabla y ver información que esta mas allá de los limites de nuestra interfaz.
+* **JScrollPane**: Este es un tipo de panel especial que se caracteriza por contener Scrolls (Barras laterales) con las que el usuario puede navegar de forma vertical u horizontal, en el caso una tabla puede contener una cantidad considerable de filas o columnas y ademas no tiene un tamaño fijo ya que en tiempo de ejecución se pueden agregar mas filas o columnas, por lo que no se puede agregar simplemente a un panel y especificarle un tamaño fijo, de ser asi mucha información no será visible para el usuario, es por eso que este tipo de panel cobra importancia y gracias a este podremos navegar dentro de la tabla y ver información que esta mas allá de los limites de la interfaz.
 * **JPanel**: Este panel es opcional y representa el **Corner** dentro de un ScrollPane, el Corner es el espacio que existe entre los ScrollBar del panel y este panel se usa para cubrir esas zonas y se vea mucho mejor.
 * **JTable**: Este es el objeto principal y esta es la representación de la información en forma de tabla que el usuario podrá revisar, ademas es el medio por el cual se tendrá una interacción directa entre el usuario y la información.
 * **JTableHeader**: Este objeto se utiliza para dar una personalización gráfica al encabezado de la tabla.
@@ -754,13 +754,13 @@ public void crearJTable(){
 }
 ```
 
-* Lo primero que haremos dentro de este método sera ejemplificar al objeto **DefaultTableModel** que en nuestro caso llamamos **modelo**:
+* Lo primero que haremos dentro de este método sera ejemplificar al objeto **DefaultTableModel** que en este caso llamamos **modelo**:
 ```javascript
 public void crearJTable(){
     modelo = new DefaultTableModel();
 }
 ```
-* Ahora vamos a agregar la información de los títulos de las columnas (la cabecera), para eso debemos decirle al modelo que se agregará con el método **setColumnIdentifiers** y le pasamos por parámetro al arreglo que contiene los títulos de las columnas en nuestro caso **cabecera**:
+* Ahora vamos a agregar la información de los títulos de las columnas (la cabecera), para eso debemos decirle al modelo que se agregará con el método **setColumnIdentifiers** y le pasamos por parámetro al arreglo que contiene los títulos de las columnas en este caso **cabecera**:
 ```javascript
 public void crearJTable(){
     modelo = new DefaultTableModel();
@@ -768,7 +768,7 @@ public void crearJTable(){
 }
 ```
 
-* Ahora vamos a ejemplificar a nuestra tabla y ademas vamos a agregarle el modelo que previamente configuramos esto con el método **setModel**:
+* Ahora vamos a ejemplificar a la tabla y ademas vamos a agregarle el modelo que previamente configuramos esto con el método **setModel**:
 ```javascript
 public void crearJTable(){
     modelo = new DefaultTableModel();
@@ -779,7 +779,7 @@ public void crearJTable(){
 }
 ```
 
-Teniendo nuestra tabla ejemplificada vamos a obtener el **JTableHeader** de la tabla que recordemos sera el objeto para darle estilos a la cabecera de la tabla, por ahora solo realizaremos la obtención y los estilos se verán en la ultima sección. Para obtenerlo usamos el método **getTableHeader()**.
+Teniendo la tabla ejemplificada vamos a obtener el **JTableHeader** de la tabla que recordemos sera el objeto para darle estilos a la cabecera de la tabla, por ahora solo realizaremos la obtención y los estilos se verán en la ultima sección. Para obtenerlo usamos el método **getTableHeader()**.
 
 ```javascript
 public void crearJTable(){
@@ -793,7 +793,7 @@ public void crearJTable(){
 }
 ```
 
-Finalmente vamos a crear a nuestro **JScrollPane** que va a contener a nuestra tabla y para esto nos vamos a ayudar de nuestro servicio **ObjGraficoService**.
+Finalmente vamos a crear a el **JScrollPane** que va a contener a la tabla y para esto nos vamos a ayudar del servicio **ObjGraficoService**.
 
 ```javascript
 public void crearJTable(){
@@ -810,7 +810,7 @@ public void crearJTable(){
 }
 ```
 
-Noten que el primer argumento que se enviá cuando se construye un **JScrollPane** es un **Componente de java** y en este caso sera nuestra tabla, todos los objetos gráficos de java heredan de un **componente de Java**.
+Noten que el primer argumento que se enviá cuando se construye un **JScrollPane** es un **Componente de java** y en este caso sera la tabla, todos los objetos gráficos de java heredan de un **componente de Java**.
 
 * **Llamada del método en el constructor:**
 ```javascript
@@ -818,7 +818,7 @@ Noten que el primer argumento que se enviá cuando se construye un **JScrollPane
 this.crearJTable();
 ```
 
-nuestra aplicación luce asi:
+La aplicación luce asi:
 
 <div align='center'>
     <img  src='https://i.imgur.com/4npYdE5.png'>
@@ -838,7 +838,7 @@ public DefaultTableModel getModelo(){
 
 # Gestión de información dentro de un JTable
 
-Ya hemos incorporado la tabla a nuestra interfaz gráfica, es tiempo de empezar a gestionar la información de los contactos para que puedan ser vistos desde esta. Para lograr aquello vamos a utilizar nuestros botónes del panel **pOpcion**, como recordaremos estos escuchan a los eventos de acción asi que vamos a usarlos para gestionar la información en nuestra tabla. Nos ubicamos en la clase **AmigosComponent** y lo primero que vamos a hacer es la declaración de los métodos que vamos a utilizar:
+Ya hemos incorporado la tabla a la interfaz gráfica, es tiempo de empezar a gestionar la información de los contactos para que puedan ser vistos desde esta. Para lograr aquello vamos a utilizar los botónes del panel **pOpcion**, como recordaremos estos escuchan a los eventos de acción asi que vamos a usarlos para gestionar la información en la tabla. Nos ubicamos en la clase **AmigosComponent** y lo primero que vamos a hacer es la declaración de los métodos que vamos a utilizar:
 
 ```javascript
 public void restaurarValores(){
@@ -909,7 +909,7 @@ public void mostrarRegistrosTabla(){
 }
 ```
 
-Ahora teniendo al objeto **amigo** de la posición actual ahora queremos agregarlo a nuestra tabla, para eso vamos ayudarnos del método **agregarRegistro** que recibe como parámetro a un objeto de tipo **Amigo** asi que le pasamos como argumento al objeto que ya tenemos cargado:
+Ahora teniendo al objeto **amigo** de la posición actual ahora queremos agregarlo a la tabla, para eso vamos ayudarnos del método **agregarRegistro** que recibe como parámetro a un objeto de tipo **Amigo** asi que le pasamos como argumento al objeto que ya tenemos cargado:
 
 ```javascript
 public void mostrarRegistrosTabla(){
@@ -956,7 +956,7 @@ public void agregarRegistro(Amigo amigo){
 }
 ```
 
-El método **agregarRegistro** ya esta listo, vamos a continuar con nuestro método **mostrarRegistrosTabla**, en teoría ya debe mostrar todos los registros de la tabla, sin embargo hacen falta algunas configuraciones adicionales, por ejemplo debemos cambiar el label que muestra el valor del Id de un contacto por el siguiente numero al ultimo registro en la tabla, ya que si el usuario desea ingresar un nuevo contacto, el ID de este nuevo amigo debe ser siguiente al ultimo registro que esta en la tabla. Para esto vamos a obtener el tamaño del arreglo de amigos ya que su tamaño siempre será la cantidad de contactos mas uno.
+El método **agregarRegistro** ya esta listo, vamos a continuar con el método **mostrarRegistrosTabla**, en teoría ya debe mostrar todos los registros de la tabla, sin embargo hacen falta algunas configuraciones adicionales, por ejemplo debemos cambiar el label que muestra el valor del Id de un contacto por el siguiente numero al ultimo registro en la tabla, ya que si el usuario desea ingresar un nuevo contacto, el ID de este nuevo amigo debe ser siguiente al ultimo registro que esta en la tabla. Para esto vamos a obtener el tamaño del arreglo de amigos ya que su tamaño siempre será la cantidad de contactos mas uno.
 
 ```javascript
 public void mostrarRegistrosTabla(){
@@ -981,7 +981,7 @@ public void mostrarRegistrosTabla(){
 }
 ```
 
-Ya esta listo nuestro método, vamos a probarlo:
+Ya esta listo el método, vamos a probarlo:
 
 <div align='center'>
     <img  src='https://i.imgur.com/GqLplms.png'>
@@ -994,7 +994,7 @@ Se puede notar que ademas se inhabilito el boton **bMostrar** y el proximo id pa
 
 Para insertar un registro nuevo debemos obtener todo lo que haya escrito el usuario en los JTextfield del panel **pDatos**, de esta forma podemos agregar una nueva fila ayudándonos del método **agregarRegistro**, vamos a verlo:
 
-* Primero vamos a utilizar a nuestro atributo **amigo** esta vez para crear un nuevo objeto, asi que lo ejemplificamos:
+* Primero vamos a utilizar al atributo **amigo** esta vez para crear un nuevo objeto, asi que lo ejemplificamos:
 
 ```javascript
 public void insertarRegistroTabla(){
@@ -1016,7 +1016,7 @@ public void insertarRegistroTabla(){
 }
 ```
 
-* Ya tenemos listo nuestro objeto, ahora vamos a agregar el registro a la tabla con la ayuda del método **agregarRegistro** y le pasamos como argumento al objeto que recién configuramos
+* Ya tenemos listo el objeto, ahora vamos a agregar el registro a la tabla con la ayuda del método **agregarRegistro** y le pasamos como argumento al objeto que recién configuramos
 ```javascript
 public void insertarRegistroTabla(){
     amigo = new Amigo();
@@ -1030,7 +1030,7 @@ public void insertarRegistroTabla(){
 }
 ```
 
-En teoría nuestro registro ya se muestra en la tabla una vez oprimamos el botón de insertar registro, sin embargo vamos a realizar unas cosas adicionales, por ejemplo vamos a agregar el objeto dentro del arreglo de amigos del servicio para que el numero de contactos total este actualizado, para esto llamaremos al método **agregarAmigo** del servicio. Ademas vamos a dejar todos los JTextfield como estaban por defecto con sus respectivos placeholders y ademas vamos a actualizar el Id para el proximo registro, para esto nos vamos a ayudar del método **restaurarValores**.
+En teoría el registro ya se muestra en la tabla una vez oprimamos el botón de insertar registro, sin embargo vamos a realizar unas cosas adicionales, por ejemplo vamos a agregar el objeto dentro del arreglo de amigos del servicio para que el numero de contactos total este actualizado, para esto llamaremos al método **agregarAmigo** del servicio. Ademas vamos a dejar todos los JTextfield como estaban por defecto con sus respectivos placeholders y ademas vamos a actualizar el Id para el proximo registro, para esto nos vamos a ayudar del método **restaurarValores**.
 
 ```javascript
 public void insertarRegistroTabla(){
@@ -1046,7 +1046,7 @@ public void insertarRegistroTabla(){
     restaurarValores(); 
 }
 ```
-sin embargo debemos configurar nuestro método **restaurarValores()**. En este simplemente vamos a dejar los placeholders que tenían por defecto ayudándonos de nuevo del arreglo **placeholders** que el componente tiene como atributo. Para el caso del label **lIdValor** vamos a actualizar su valor con el tamaño del arreglo nuevamente:
+sin embargo debemos configurar el método **restaurarValores()**. En este simplemente vamos a dejar los placeholders que tenían por defecto ayudándonos de nuevo del arreglo **placeholders** que el componente tiene como atributo. Para el caso del label **lIdValor** vamos a actualizar su valor con el tamaño del arreglo nuevamente:
 
 ```javascript
 public void restaurarValores(){
@@ -1059,7 +1059,7 @@ public void restaurarValores(){
 }
 ```
 
-Si probamos nuestra aplicación e insertamos nuevos contactos veremos algo como esto:
+Si probamos la aplicación e insertamos nuevos contactos veremos algo como esto:
 
 <div align='center'>
     <img  src='https://i.imgur.com/AIQOVBu.png'>
@@ -1132,7 +1132,7 @@ public void modificarRegistroTabla(){
 ```
 Como se puede ver en el caso del nombre, pasamos la información que obtenemos del JTextField **tNombre**, la fila sera la que selecciono el usuario y la columna de los nombres siempre sera la numero 1 (la 0 es la del id), lo mismo ocurre con el telefono y email donde obtenemos la información correspondiente del JTextField y cambiamos el valor de la columna que para el telefono siempre sera la numero 2 y para el email será el numero 3.
 
-Si ejecutamos nuestra aplicación podemos ver que si funciona la modificación en la tabla sin embargo un usuario puede modificar mas datos a parte del nombre, telefono o email, ademas el cambio solo se ve en la tabla pero el objeto que contiene la información de ese objeto sigue intacta, asi que es necesario también realizar la modificación de esos datos en el objeto, vamos a obtener el objeto desde el servicio y la posición en el arreglo es justamente la misma que en la posición de la fila en la tabla asi que se la enviamos como argumento:
+Si ejecutamos la aplicación podemos ver que si funciona la modificación en la tabla sin embargo un usuario puede modificar mas datos a parte del nombre, telefono o email, ademas el cambio solo se ve en la tabla pero el objeto que contiene la información de ese objeto sigue intacta, asi que es necesario también realizar la modificación de esos datos en el objeto, vamos a obtener el objeto desde el servicio y la posición en el arreglo es justamente la misma que en la posición de la fila en la tabla asi que se la enviamos como argumento:
 
 ```javascript
 public void modificarRegistroTabla(){
@@ -1181,7 +1181,7 @@ public void modificarRegistroTabla(){
 }
 ```
 
-Si probamos nuestra aplicación vemos que funciona correctamente pero hay una situation incomoda para el usuario y es que cada vez que quiera modificar la información de un usuario este tendrá que reescribirla en los JTextField modificando a su vez los atributos que necesita actualizar, esto es muy engorroso para nuestros usuarios. Una buena solución a esto puede ser que una vez el usuario seleccione una fila en la tabla, la información de este contacto se coloque automáticamente en los JTextfield y de esa forma el usuario solamente deba modificar lo que necesite.  
+Si probamos la aplicación vemos que funciona correctamente pero hay una situation incomoda para el usuario y es que cada vez que quiera modificar la información de un usuario este tendrá que reescribirla en los JTextField modificando a su vez los atributos que necesita actualizar, esto es muy engorroso para los usuarios. Una buena solución a esto puede ser que una vez el usuario seleccione una fila en la tabla, la información de este contacto se coloque automáticamente en los JTextfield y de esa forma el usuario solamente deba modificar lo que necesite.  
 
 Para esto necesitamos adicionarle la escucha de eventos MouseListener a la tabla para que una vez el usuario de click sobre una fila realice la acción previamente descrita 
 
@@ -1288,7 +1288,7 @@ En este caso solo eliminaremos el registro de la tabla y no del arreglo ya que n
 
 ## Filtrar registros de la tabla
 
-Los filtros dentro de nuestra tabla se usan a menudo cuando existe una cantidad considerable de registros dentro de esta y queremos buscar alguno en especifico o algunos bajo algún criterio. Para realizar esto debemos llamar a un objeto especial que se encarga de realizar estos filtros. Este objeto es un **TableRowSorter** este objeto crea una copia del modelo de la tabla (quien contiene la información de esta) por lo que es un arreglo dinámico que podrá cambiar su contenido de acuerdo a un criterio, primero vamos a ejemplificarlo y como este sera una copia del **modelo**, al momento de la ejemplificación debemos enviar al modelo como argumento.
+Los filtros dentro de la tabla se usan a menudo cuando existe una cantidad considerable de registros dentro de esta y queremos buscar alguno en especifico o algunos bajo algún criterio. Para realizar esto debemos llamar a un objeto especial que se encarga de realizar estos filtros. Este objeto es un **TableRowSorter** este objeto crea una copia del modelo de la tabla (quien contiene la información de esta) por lo que es un arreglo dinámico que podrá cambiar su contenido de acuerdo a un criterio, primero vamos a ejemplificarlo y como este sera una copia del **modelo**, al momento de la ejemplificación debemos enviar al modelo como argumento.
 
 ```javascript
 public void filtrarRegistrosTabla(){
@@ -1333,7 +1333,7 @@ public void filtrarRegistrosTabla(){
 }
 ```
 
-Nuestro filtro esta listo, ahora si corremos nuestra aplicación, escribimos algún criterio de filtro en el JTextField **tFiltrar** y luego oprimimos el boton **bFiltrar** veremos algo como esto:
+El filtro esta listo, ahora si corremos la aplicación, escribimos algún criterio de filtro en el JTextField **tFiltrar** y luego oprimimos el boton **bFiltrar** veremos algo como esto:
 
 <div align='center'>
     <img  src='https://i.imgur.com/bfJV5NM.png'>
@@ -1342,7 +1342,7 @@ Nuestro filtro esta listo, ahora si corremos nuestra aplicación, escribimos alg
 
 # Personalización del JTable
 
-Nuestra tabla funciona de maravilla y ya podemos gestionar la información a traves de ella. Sin embargo, esta tabla se ve un poco mal con respecto a la interfaz que hemos estado manejando, es hora de personalizarla un poco y que tome un mejor aspecto. Vamos a dirigirnos al método **crearTable** de la clase **AmigosTemplate** y vamos a realizar algunas configuraciones que le darán un mejor aspecto.
+La tabla funciona de maravilla y ya podemos gestionar la información a traves de ella. Sin embargo, esta tabla se ve un poco mal con respecto a la interfaz que hemos estado manejando, es hora de personalizarla un poco y que tome un mejor aspecto. Vamos a dirigirnos al método **crearTable** de la clase **AmigosTemplate** y vamos a realizar algunas configuraciones que le darán un mejor aspecto.
 
 Para empezar podemos agregarle un alto a cada fila, ya que las filas están muy pegadas la una de la otra, esto con el método **setRowHeight** que recibe como parámetro un entero que representa la altura de cada fila. También podemos quitar las lineas que separan cada fila y cada columna, esto va dependiendo del diseño de cada desarrollador en este caso creemos que se vera mejor si omitimos estas lineas, para ocultar estas lineas podemos usar los métodos **setShowHorizontalLines y setShowVerticalLines**, ambos reciben como parámetro un booleano que si se deja en false, ocultara estas lineas
 
@@ -1359,7 +1359,7 @@ public void crearJTable(){
     <p>Tabla con filas mas altas y sin las lineas que separan los registros</p>
 </div>
 
-Nuestra cabecera de la tabla esta un poco angosta ahora con respecto a los registros de la tabla, vamos a añadirle mas altura, para esto debemos tomar el objeto **header** que ya obtuvimos previamente de la tabla. Para darle un tamaño al header tenemos que utilizar el método **setPreferredSize**. 
+La cabecera de la tabla esta un poco angosta ahora con respecto a los registros de la tabla, vamos a añadirle mas altura, para esto debemos tomar el objeto **header** que ya obtuvimos previamente de la tabla. Para darle un tamaño al header tenemos que utilizar el método **setPreferredSize**. 
 
 ```javascript
 header.setPreferredSize();
@@ -1382,9 +1382,9 @@ header.setPreferredSize(new Dimension(580, 30));
     <p>Tabla con cabecera más grande</p>
 </div>
 
-A continuación vamos a crear un nuevo servicio Gráfico para decorar mejor nuestra tabla, el propósito de esta clase no sera explicar que hacen estos métodos, vamos a dedicar una clase entera para explicar que hacen estos métodos, por ahora solo lo vamos a implementar.
+A continuación vamos a crear un nuevo servicio Gráfico para decorar mejor la tabla, el propósito de esta clase no sera explicar que hacen estos métodos, vamos a dedicar una clase entera para explicar que hacen estos métodos, por ahora solo lo vamos a implementar.
 
-## Preparando detalles para personalizar nuestra tabla
+## Preparando detalles para personalizar la tabla
 
 Vamos a crear un servicio llamado **GraficosAvanzadosService** y lo dejaremos dentro del paquete **ServiceGraphics**
 
@@ -1400,7 +1400,7 @@ Este servicio ademas de la estructura básica de un servicio contiene varios mé
     <p>Código dentro del servicio GraficosAvanzadosService</p>
 </div>
 
-Vamos a obtener ese servicio en nuestra clase **AmigosTemplate**
+Vamos a obtener ese servicio en la clase **AmigosTemplate**
 
 * **Declaración:**
 ```javascript
@@ -1413,13 +1413,13 @@ private GraficosAvanzadosService sGraficosAvanzados;
 this.sGraficosAvanzados = GraficosAvanzadosService.getService();
 ```
 
-Primero vamos a personalizar la cabecera de nuestra tabla, vamos a añadirle un color de fondo azul y un color de fuente blanco, para eso debemos llamar al método **setDefaultRenderer** de nuestra cabecera:
+Primero vamos a personalizar la cabecera de la tabla, vamos a añadirle un color de fondo azul y un color de fuente blanco, para eso debemos llamar al método **setDefaultRenderer** de la cabecera:
 
 ```javascript
 header.setDefaultRenderer();
 ```
 
-Dentro de este método, como parámetro vamos a tener que crear un objeto **DefaultRender**, pero para esto tenemos un método en nuestro servicio llamado **devolverTablaPersonalizada**, que nos va a pedir varias cosas como parámetro:
+Dentro de este método, como parámetro vamos a tener que crear un objeto **DefaultRender**, pero para esto tenemos un método en el servicio llamado **devolverTablaPersonalizada**, que nos va a pedir varias cosas como parámetro:
 
 * **ColorPrincipal:** Es el color principal que va a tener la tabla.
 * **ColorSecundario:** Es el color que complementa al color principal, si se pasan los dos colores la primera fila va a tomar el color primario, la segunda fila el color secundario y asi sucesivamente.
@@ -1444,7 +1444,7 @@ tabla.setDefaultRenderer(Object.class, sGraficosAvanzados.devolverTablaPersonali
 ));
 ```
 
-Vamos a ver como se ve nuestra interfaz:
+Vamos a ver como se ve la interfaz:
 
 <div align='center'>
     <img  src='https://i.imgur.com/ctKJr4J.png'>
@@ -1452,13 +1452,13 @@ Vamos a ver como se ve nuestra interfaz:
 </div>
 
 
-Ahora vamos a cambiar el Scroll que acompaña a la tabla una vez hay muchos registros, este Scroll por defecto es algo anticuado y no se ve bien con respecto al resto de nuestra interfaz. Para esto le vamos a indicar a nuestro PaneScroll **pTabla** que vamos a editar el Scroll vertical, asi que debemos obtenerlo primero:
+Ahora vamos a cambiar el Scroll que acompaña a la tabla una vez hay muchos registros, este Scroll por defecto es algo anticuado y no se ve bien con respecto al resto de la interfaz. Para esto le vamos a indicar al PaneScroll **pTabla** que vamos a editar el Scroll vertical, asi que debemos obtenerlo primero:
 
 ```javascript
 pTabla.getVerticalScrollBar();
 ```
 
-Luego para darle una personalización debemos llamar al método **setUI** que va a pedir por parámetro un objeto tipo **BasicScrollBarUI** y con ayuda de nuestro servicio **GraficosAvanzadosService** y su método **devolverScrollPersonalizado** podemos realizar dicha personalización.
+Luego para darle una personalización debemos llamar al método **setUI** que va a pedir por parámetro un objeto tipo **BasicScrollBarUI** y con ayuda del servicio **GraficosAvanzadosService** y su método **devolverScrollPersonalizado** podemos realizar dicha personalización.
 
 Este método va a pedir por parámetro:
 
@@ -1476,14 +1476,14 @@ pTabla.getVerticalScrollBar().setUI(
 );
 ```
 
-Nuestra tabla se vera de la siguiente manera:
+La tabla se vera de la siguiente manera:
 
 <div align='center'>
     <img  src='https://i.imgur.com/yByBis9.png'>
     <p>Personalización del Scroll de la tabla.</p>
 </div>
 
-Por ultimo podemos notar que en la parte superior izquierda al lado de la cabecera hay un espacio que sobra, este espacio es conocido como el **Corner** del ScrollBar y podemos editarlo para que luzca como si fuera parte de la cabecera. Para esto vamos a usar nuestro panel **pCorner**, lo primero que haremos es ejemplificarlo de forma tradicional:
+Por ultimo podemos notar que en la parte superior izquierda al lado de la cabecera hay un espacio que sobra, este espacio es conocido como el **Corner** del ScrollBar y podemos editarlo para que luzca como si fuera parte de la cabecera. Para esto vamos a usar el panel **pCorner**, lo primero que haremos es ejemplificarlo de forma tradicional:
 
 ```javascript
 // Dentro del método crearJTable
@@ -1496,7 +1496,7 @@ pCorner = new JPanel();
 pCorner.setBackground(sRecursos.getColorPrincipal());
 ```
 
-Por ultimo vamos a configurar ese **Corner** a nuestro **ScrollPane**, esto mediante el método **setCorner** que va a pedir por parámetros 2 cosas:
+Por ultimo vamos a configurar ese **Corner** al **ScrollPane**, esto mediante el método **setCorner** que va a pedir por parámetros 2 cosas:
 * **Ubicación del corner:** Esto debido a que puede existir un espacio sobrante en distintas partes del **JScrollPane**, asi que hay que especificar en que esquina esta ubicado el Corner a editar.
 * **Corner:** Es el objeto gráfico que va a cubrir el espacio, en este caso un panel.
 
@@ -1507,7 +1507,7 @@ pCorner.setBackground(sRecursos.getColorPrincipal());
 pTabla.setCorner(JScrollPane.UPPER_RIGHT_CORNER, pCorner);
 ```
 
-Finalmente nuestra tabla se ve asi:
+Finalmente la tabla se ve asi:
 <div align='center'>
     <img  src='https://i.imgur.com/K8JYhqm.png'>
     <p>Personalización total de la tabla.</p>
@@ -1515,8 +1515,8 @@ Finalmente nuestra tabla se ve asi:
 
 # Resultado 
 
-Si has llegado hasta aquí **!Felicidades!** has aprendido las partes para construir tablas, como gestionar información a traves de Tablas, como dar cierta interactividad a estas y ademas has aprendido como personalizarlas. En la siguiente clase vamos a ver animaciones para darle ese toque final de interactividad a nuestro proyecto.
+Si has llegado hasta aquí **!Felicidades!** has aprendido las partes para construir tablas, como gestionar información a traves de Tablas, como dar cierta interactividad a estas y ademas has aprendido como personalizarlas. En la siguiente clase vamos a ver animaciones para darle ese toque final de interactividad al proyecto.
 
 # Actividad 
 
-Hacer uso de tablas dentro de sus respectivos proyectos para la gestión de la información y realizar personalización de estas con ayuda de nuestro nuevo servicio gráfico.
+Hacer uso de tablas dentro de sus respectivos proyectos para la gestión de la información y realizar personalización de estas con ayuda del nuevo servicio gráfico.
