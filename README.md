@@ -10,47 +10,50 @@ Curso propuesto por el grupo de trabajo Semana de Ingenio y Diseño (**SID**) de
 
 ## Objetivos
 
-* Examinar las características principales del objeto gráfico JTable y como podemos crearla, y gestionarla para interfaces gráficas.
-* Reconocer el propósito del uso de tablas dentro de las interfaces y como gestionar la información a través de estas.
-* Identificar las acciónes principales de gestión de información en una tabla tal como insertar información, modificarla, filtrarla y eliminarla.
+* Examinar las características principales del objeto gráfico JTable ademas de su creación y gestión dentro de las interfaces gráficas.
+* Reconocer el propósito del uso de tablas dentro de las interfaces y como manejar la información a través de estas.
+* Identificar las acciónes principales de gestión de información en una tabla tal como insertar, modificar, filtrar y eliminar información.
 * Personalizar la tabla con estilos para que esta pueda tener un aspecto conforme con el resto de la interfaz gráfica.
 
 # Antes de Comenzar
 
-Dentro del paquete **archives** vamos a agregar otro archivo plano llamado **amigos.txt** que contendrá información general de los contactos que vamos a gestionar. Este archivo planos lo puede encontrar en este mismo repositorio entrando a la carpeta **Clase11** seguido de la carpeta **src** y luego en la carpeta **archives**.
+### **Ajustes en el proyecto**
+___
+Dentro del paquete **archives** se agrega otro archivo plano llamado **amigos.txt** que contendrá información general de los contactos a gestionar. Este archivo plano se puede encontrar en este mismo repositorio entrando a la carpeta **Clase11** seguido de la carpeta **src** y luego en la carpeta **archives**.
 
 <div align='center'>
     <img  src='https://i.imgur.com/qQxza9B.png'>
     <p>Se inserta archivo plano dentro del paquete archives.</p>
 </div>
 
-Vamos a crear un borde lineal de color azul en el servicio **RecursosService**.
+### **Ajustes en el servicio Recursos Service**
+___
+Se crea un borde lineal de color azul en el servicio **RecursosService**.
 
 * **Declaración:**
 ```javascript
-private Border borderAzul;
+private Border bAzul;
 ```
 
 * **Ejemplificación**
 ```javascript
-// Dentro del constructor
-borderAzul = BorderFactory.createLineBorder(colorPrincipal, 2, true);
+// Dentro del método crear Bordes
+bAzul = BorderFactory.createLineBorder(colorPrincipal, 2, true);
 ```
 
 * **Método get**
 ```javascript
-public Border getBorderAzul(){
-    return borderAzul;
-}
+public Border getBAzul() { return bAzul; }
 ```
-
-Recordando un poco el recorrido, hemos utilizado los servicios para gestionar varias cosas dentro del proyecto, una de estas fue la generación automática de la reutilización del componente **Accion** a traves de la obtención de la información externa. Por otra parte ahora gestionamos **el ingreso de la aplicación** a traves de algunos usuarios que han sido registrados y están contenidos de forma persistente (archivo plano) y gracias a los servicios no solo podemos controlar el ingreso único de estos usuarios sino que ademas podemos gestionar la información de estos a traves de varias partes del proyecto de forma independiente.
+### **Recordatorio**
+___
+Recordando un poco el recorrido, se han utilizado los servicios para gestionar varias cosas dentro del proyecto, una de estas fue la generación automática de la reutilización del componente **Accion** a traves de la obtención de la información externa. Por otra parte ahora se gestiona **el ingreso de la aplicación** a traves de algunos usuarios que han sido registrados y están contenidos de forma persistente (archivo plano) y gracias a los servicios no solo es posible controlar el ingreso único de estos usuarios sino que ademas se puede gestionar la información de estos a traves de varias partes del proyecto de forma independiente.
 
 # Creación y gestión de tablas
 
-En esta sesión vamos a ver la creación y gestión del objeto gráfico avanzado **JTable** el cual es muy util para gestionar información, para dar un recorrido completo al uso de este objeto vamos a ver ciertos items como:
+En esta sesión se va a ver la creación y gestión del objeto gráfico avanzado **JTable** el cual es muy util para manejar y mostrar información de forma ordenada, para dar un recorrido completo al uso de este objeto se verán ciertos items como:
 
-* Creación de Servicios y preparativos para el uso de JTable.
+* Creación de servicios y preparativos para el uso de JTable.
 * Creación de JTable y sus partes.
 * Gestión de información dentro de un JTable.
 * Personalización del JTable.
